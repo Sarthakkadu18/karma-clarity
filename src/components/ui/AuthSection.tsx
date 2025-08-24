@@ -44,16 +44,70 @@ export const AuthSection: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-20 px-4">
-      <div className="w-full max-w-md">
+    <section className="min-h-screen flex items-center justify-center py-20 px-4 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 z-0">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          className="absolute top-1/4 right-1/4 w-64 h-64 bg-spiritual-purple/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-spiritual-teal/10 rounded-full blur-2xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.4, 0.7, 0.4],
+            rotate: [360, 180, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+      
+      <div className="w-full max-w-md relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 50, rotateX: -15 }}
+          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <Card className="glass border-border/20 backdrop-blur-xl">
-            <CardHeader className="text-center">
+          <motion.div
+            whileHover={{ 
+              scale: 1.02,
+              rotateY: 2,
+              boxShadow: '0 25px 50px -12px hsl(var(--spiritual-purple) / 0.25)',
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <Card className="glass border-border/20 backdrop-blur-xl relative overflow-hidden group">
+              {/* Card shine effect */}
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: 'linear-gradient(135deg, transparent 30%, hsl(var(--spiritual-purple)/0.1) 50%, transparent 70%)',
+                }}
+                animate={{
+                  x: ['-100%', '100%'],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatDelay: 3,
+                }}
+              />
+              
+              <CardHeader className="text-center">
               <CardTitle className="text-2xl font-display text-gradient">
                 {isLogin ? 'Welcome Back' : 'Join MindVersee'}
               </CardTitle>
@@ -160,7 +214,8 @@ export const AuthSection: React.FC = () => {
                 </button>
               </div>
             </CardContent>
-          </Card>
+            </Card>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -105,24 +105,56 @@ All colors MUST be HSL for consistency and proper theming.
 
   /* Custom animations */
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(1deg); }
+    50% { transform: translateY(-10px) rotate(0deg); }
+    75% { transform: translateY(-5px) rotate(-1deg); }
   }
 
   @keyframes glow {
-    0%, 100% { box-shadow: var(--shadow-glow); }
-    50% { box-shadow: 0 0 50px hsl(var(--spiritual-purple) / 0.5); }
+    0%, 100% { 
+      box-shadow: var(--shadow-glow);
+      filter: brightness(1);
+    }
+    50% { 
+      box-shadow: 0 0 50px hsl(var(--spiritual-purple) / 0.5);
+      filter: brightness(1.1);
+    }
   }
 
   @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+    0% { background-position: -200% 0; opacity: 0; }
+    50% { opacity: 1; }
+    100% { background-position: 200% 0; opacity: 0; }
   }
 
   @keyframes nebula-drift {
     0% { background-position: 0% 50%; }
+    25% { background-position: 100% 25%; }
     50% { background-position: 100% 50%; }
+    75% { background-position: 0% 75%; }
     100% { background-position: 0% 50%; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(var(--spiritual-purple) / 0.3);
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: 0 0 40px hsl(var(--spiritual-purple) / 0.6);
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
   }
 
   .animate-float {
@@ -130,17 +162,29 @@ All colors MUST be HSL for consistency and proper theming.
   }
 
   .animate-glow {
-    animation: glow 3s ease-in-out infinite;
+    animation: glow 4s ease-in-out infinite;
   }
 
   .animate-shimmer {
-    background: linear-gradient(90deg, transparent, hsl(var(--spiritual-gold) / 0.1), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--spiritual-gold) / 0.2), transparent);
     background-size: 200% 100%;
-    animation: shimmer 2s ease-in-out infinite;
+    animation: shimmer 3s ease-in-out infinite;
   }
 
   .animate-nebula {
-    animation: nebula-drift 20s ease-in-out infinite;
+    animation: nebula-drift 25s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out infinite;
   }
 
   /* Scrollbar styling */

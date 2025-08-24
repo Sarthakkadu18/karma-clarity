@@ -1,23 +1,61 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export const HeroSection: React.FC = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark-primary">
-      {/* Custom Animated Background */}
+      {/* Advanced Animated Background */}
       <div className="absolute inset-0 z-0">
-        {/* Floating particles */}
-        {[...Array(50)].map((_, i) => (
+        {/* Dynamic gradient orbs that follow mouse */}
+        <motion.div
+          className="absolute w-[800px] h-[800px] rounded-full opacity-20"
+          style={{
+            background: 'radial-gradient(circle, hsl(var(--spiritual-purple)) 0%, transparent 70%)',
+            filter: 'blur(40px)',
+          }}
+          animate={{
+            x: mousePosition.x - 400,
+            y: mousePosition.y - 400,
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            x: { type: "spring", stiffness: 50, damping: 30 },
+            y: { type: "spring", stiffness: 50, damping: 30 },
+            scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+          }}
+        />
+        
+        {/* Floating cosmic particles */}
+        {[...Array(100)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-spiritual-purple/30 rounded-full"
+            className="absolute rounded-full"
+            style={{
+              width: Math.random() * 4 + 1,
+              height: Math.random() * 4 + 1,
+              background: `hsl(${280 + Math.random() * 60}, 100%, ${60 + Math.random() * 30}%)`,
+              boxShadow: `0 0 ${Math.random() * 20 + 10}px hsl(${280 + Math.random() * 60}, 100%, ${60 + Math.random() * 30}%)`,
+            }}
             initial={{
               x: Math.random() * window.innerWidth,
               y: Math.random() * window.innerHeight,
+              opacity: Math.random() * 0.8 + 0.2,
             }}
             animate={{
               x: Math.random() * window.innerWidth,
               y: Math.random() * window.innerHeight,
+              opacity: [0.2, 1, 0.2],
+              scale: [1, 1.5, 1],
             }}
             transition={{
               duration: Math.random() * 20 + 10,
@@ -28,86 +66,205 @@ export const HeroSection: React.FC = () => {
           />
         ))}
         
-        {/* Gradient orbs */}
+        {/* Pulsing gradient rings */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-spiritual-purple/20 to-spiritual-blue/20 rounded-full blur-3xl"
+          className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full"
+          style={{
+            background: 'conic-gradient(from 0deg, hsl(var(--spiritual-purple)/0.3), hsl(var(--spiritual-blue)/0.3), hsl(var(--spiritual-teal)/0.3), hsl(var(--spiritual-gold)/0.3), hsl(var(--spiritual-purple)/0.3))',
+            filter: 'blur(30px)',
+          }}
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3],
+            rotate: [0, 360],
+            scale: [1, 1.3, 1],
+            opacity: [0.3, 0.7, 0.3],
           }}
           transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-spiritual-teal/20 to-spiritual-gold/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.4, 0.7, 0.4],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
+            rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+            scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+            opacity: { duration: 6, repeat: Infinity, ease: "easeInOut" },
           }}
         />
         
-        {/* Grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,69,195,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,69,195,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        <motion.div
+          className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full"
+          style={{
+            background: 'conic-gradient(from 180deg, hsl(var(--spiritual-gold)/0.4), hsl(var(--spiritual-teal)/0.4), hsl(var(--spiritual-blue)/0.4), hsl(var(--spiritual-purple)/0.4), hsl(var(--spiritual-gold)/0.4))',
+            filter: 'blur(25px)',
+          }}
+          animate={{
+            rotate: [360, 0],
+            scale: [1.2, 1, 1.2],
+            opacity: [0.4, 0.8, 0.4],
+          }}
+          transition={{
+            rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+            scale: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+            opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+          }}
+        />
+        
+        {/* Animated mesh gradient */}
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            background: `
+              radial-gradient(circle at 20% 50%, hsl(var(--spiritual-purple)) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, hsl(var(--spiritual-blue)) 0%, transparent 50%),
+              radial-gradient(circle at 40% 80%, hsl(var(--spiritual-teal)) 0%, transparent 50%),
+              radial-gradient(circle at 90% 70%, hsl(var(--spiritual-gold)) 0%, transparent 50%)
+            `,
+            animation: 'nebula-drift 30s ease-in-out infinite',
+          }}
+        />
+        
+        {/* Dynamic grid pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div 
+            className="w-full h-full"
+            style={{
+              backgroundImage: `
+                linear-gradient(hsl(var(--spiritual-purple)/0.3) 1px, transparent 1px),
+                linear-gradient(90deg, hsl(var(--spiritual-purple)/0.3) 1px, transparent 1px)
+              `,
+              backgroundSize: '60px 60px',
+              animation: 'float 20s ease-in-out infinite',
+            }}
+          />
+        </div>
       </div>
       
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-dark-primary/20 z-10" />
-      
       {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-20 text-center px-4 max-w-5xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="relative"
         >
-          <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-bold mb-6 animate-glow">
-            <span className="text-gradient">MindVersee</span>
-          </h1>
+          {/* Background glow for title */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-primary opacity-20 blur-3xl rounded-full"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.1, 0.3, 0.1],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
           
-          <motion.p
+          <motion.h1 
+            className="relative font-display text-6xl md:text-8xl lg:text-9xl font-bold mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="text-xl md:text-2xl lg:text-3xl text-text-secondary font-light tracking-wide"
+            transition={{ delay: 0.3, duration: 1 }}
           >
-            Inner Peace and Wisdom
-          </motion.p>
+            <motion.span 
+              className="text-gradient inline-block"
+              animate={{
+                filter: [
+                  'hue-rotate(0deg) brightness(1)',
+                  'hue-rotate(10deg) brightness(1.1)',
+                  'hue-rotate(0deg) brightness(1)',
+                ],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              MindVersee
+            </motion.span>
+          </motion.h1>
           
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 1 }}
+            className="relative"
           >
-            <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full" />
+            <p className="text-xl md:text-2xl lg:text-3xl text-text-secondary font-light tracking-wide mb-8">
+              Inner Peace and Wisdom
+            </p>
+            
+            {/* Animated divider */}
+            <motion.div className="relative mx-auto w-32 h-2 mb-8">
+              <motion.div
+                className="absolute inset-0 bg-gradient-primary rounded-full"
+                animate={{
+                  scaleX: [0, 1, 0],
+                  opacity: [0, 1, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 bg-gradient-secondary rounded-full"
+                animate={{
+                  scaleX: [0, 1, 0],
+                  opacity: [0, 1, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.5,
+                }}
+              />
+            </motion.div>
           </motion.div>
         </motion.div>
         
-        {/* Scroll indicator */}
+        {/* Enhanced scroll indicator */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2, duration: 1 }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
-          <div className="flex flex-col items-center text-text-muted">
-            <span className="text-sm mb-2">Scroll to explore</span>
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="w-6 h-6 border-2 border-spiritual-purple rounded-full flex items-center justify-center"
+          <motion.div
+            className="flex flex-col items-center text-text-muted cursor-pointer group"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.span 
+              className="text-sm mb-4 group-hover:text-spiritual-purple transition-colors"
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
             >
-              <div className="w-1 h-1 bg-spiritual-purple rounded-full" />
+              Scroll to explore
+            </motion.span>
+            <motion.div
+              className="relative w-8 h-12 border-2 border-spiritual-purple/50 rounded-full flex items-start justify-center pt-2 group-hover:border-spiritual-purple transition-colors"
+              animate={{ 
+                boxShadow: [
+                  '0 0 0px hsl(var(--spiritual-purple)/0.3)',
+                  '0 0 20px hsl(var(--spiritual-purple)/0.6)',
+                  '0 0 0px hsl(var(--spiritual-purple)/0.3)',
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <motion.div
+                className="w-1 h-3 bg-spiritual-purple rounded-full"
+                animate={{ 
+                  y: [0, 8, 0],
+                  opacity: [1, 0.3, 1],
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
