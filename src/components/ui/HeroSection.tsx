@@ -1,17 +1,65 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SplineEmbed } from './SplineEmbed';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* 3D Background */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark-primary">
+      {/* Custom Animated Background */}
       <div className="absolute inset-0 z-0">
-        <SplineEmbed />
+        {/* Floating particles */}
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-spiritual-purple/30 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            transition={{
+              duration: Math.random() * 20 + 10,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "linear",
+            }}
+          />
+        ))}
+        
+        {/* Gradient orbs */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-spiritual-purple/20 to-spiritual-blue/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-spiritual-teal/20 to-spiritual-gold/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.4, 0.7, 0.4],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,69,195,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,69,195,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
       </div>
       
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-dark-primary/40 z-10" />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-dark-primary/20 z-10" />
       
       {/* Content */}
       <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
