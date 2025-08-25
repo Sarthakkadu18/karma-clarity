@@ -189,6 +189,52 @@ export const HeroSection: React.FC = () => {
               Inner Peace and Wisdom
             </p>
             
+            {/* Enhanced scroll indicator */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2, duration: 1 }}
+              className="flex justify-center mb-8"
+            >
+              <motion.div
+                className="flex flex-col items-center text-text-muted cursor-pointer group"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <motion.span 
+                  className="text-sm mb-4 group-hover:text-spiritual-purple transition-colors"
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  Scroll to explore
+                </motion.span>
+                <motion.div
+                  className="relative w-8 h-12 border-2 border-spiritual-purple/50 rounded-full flex items-start justify-center pt-2 group-hover:border-spiritual-purple transition-colors"
+                  animate={{ 
+                    boxShadow: [
+                      '0 0 0px hsl(var(--spiritual-purple)/0.3)',
+                      '0 0 20px hsl(var(--spiritual-purple)/0.6)',
+                      '0 0 0px hsl(var(--spiritual-purple)/0.3)',
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <motion.div
+                    className="w-1 h-3 bg-spiritual-purple rounded-full"
+                    animate={{ 
+                      y: [0, 8, 0],
+                      opacity: [1, 0.3, 1],
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </motion.div>
+              </motion.div>
+            </motion.div>
+            
             {/* Animated divider */}
             <motion.div className="relative mx-auto w-32 h-2 mb-8">
               <motion.div
@@ -214,52 +260,6 @@ export const HeroSection: React.FC = () => {
                   repeat: Infinity,
                   ease: "easeInOut",
                   delay: 1.5,
-                }}
-              />
-            </motion.div>
-          </motion.div>
-        </motion.div>
-        
-        {/* Enhanced scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            className="flex flex-col items-center text-text-muted cursor-pointer group"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.span 
-              className="text-sm mb-4 group-hover:text-spiritual-purple transition-colors"
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              Scroll to explore
-            </motion.span>
-            <motion.div
-              className="relative w-8 h-12 border-2 border-spiritual-purple/50 rounded-full flex items-start justify-center pt-2 group-hover:border-spiritual-purple transition-colors"
-              animate={{ 
-                boxShadow: [
-                  '0 0 0px hsl(var(--spiritual-purple)/0.3)',
-                  '0 0 20px hsl(var(--spiritual-purple)/0.6)',
-                  '0 0 0px hsl(var(--spiritual-purple)/0.3)',
-                ]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <motion.div
-                className="w-1 h-3 bg-spiritual-purple rounded-full"
-                animate={{ 
-                  y: [0, 8, 0],
-                  opacity: [1, 0.3, 1],
-                }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity,
-                  ease: "easeInOut",
                 }}
               />
             </motion.div>
