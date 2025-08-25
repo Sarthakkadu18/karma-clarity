@@ -33,11 +33,11 @@ const Home: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
-              <span className="text-gradient">Welcome back, {user?.username}</span>
+            <h1 className="text-4xl md:text-6xl font-display font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-4">
+              MindVersee
             </h1>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-              Find peace and guidance through the wisdom of ages. Your spiritual journey continues here.
+            <p className="text-xl text-gray-400">
+              Find peace and guidance through the wisdom of ages
             </p>
           </motion.div>
 

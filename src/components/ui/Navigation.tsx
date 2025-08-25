@@ -80,12 +80,11 @@ export const Navigation: React.FC = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-                    <Avatar className="h-10 w-10">
-                      <AvatarImage src={user?.avatar} alt={user?.username} />
-                      <AvatarFallback className="bg-gradient-primary text-white">
-                        {user?.username?.charAt(0).toUpperCase() || 'U'}
-                      </AvatarFallback>
-                    </Avatar>
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-gray-800 to-gray-600 border-2 border-gray-700 hover:border-gray-500 transition-colors flex items-center justify-center">
+                      <svg className="w-6 h-6 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                      </svg>
+                    </div>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56 glass border-border/20" align="end">

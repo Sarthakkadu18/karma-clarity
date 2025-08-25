@@ -13,14 +13,14 @@ export const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark-primary">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Advanced Animated Background */}
       <div className="absolute inset-0 z-0">
         {/* Dynamic gradient orbs that follow mouse */}
         <motion.div
-          className="absolute w-[800px] h-[800px] rounded-full opacity-20"
+          className="absolute w-[800px] h-[800px] rounded-full opacity-10"
           style={{
-            background: 'radial-gradient(circle, hsl(var(--spiritual-purple)) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, #1a1a1a 0%, transparent 70%)',
             filter: 'blur(40px)',
           }}
           animate={{
@@ -162,18 +162,17 @@ export const HeroSection: React.FC = () => {
             transition={{ delay: 0.3, duration: 1 }}
           >
             <motion.span 
-              className="text-gradient inline-block"
+              className="bg-gradient-to-r from-slate-200 to-slate-400 bg-clip-text text-transparent inline-block"
               animate={{
-                filter: [
-                  'hue-rotate(0deg) brightness(1)',
-                  'hue-rotate(10deg) brightness(1.1)',
-                  'hue-rotate(0deg) brightness(1)',
-                ],
+                backgroundPosition: ['0%', '100%', '0%'],
               }}
               transition={{
-                duration: 3,
+                duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut",
+              }}
+              style={{
+                backgroundSize: '200% 100%'
               }}
             >
               MindVersee
