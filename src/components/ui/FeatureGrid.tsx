@@ -100,6 +100,32 @@ const features = [
     color: 'from-blue-500/10 to-indigo-600/10',
     borderColor: 'border-blue-500/20',
     path: '/chat/iqra'
+  },
+  {
+    id: 'pragmatism',
+    title: 'Pragmatism',
+    description: 'Strategic wisdom (Chanakya Niti)',
+    icon: (
+      <motion.div 
+        className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-2xl relative overflow-hidden"
+        whileHover={{ scale: 1.1, rotate: 5 }}
+        transition={{ type: "spring", stiffness: 300 }}
+      >
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-700 opacity-0"
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        />
+        <svg className="w-8 h-8 text-white relative z-10" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M5 16L3 8l9-3 9 3-2 8-9-3z"/>
+          <path d="M12 13v-3"/>
+          <path d="M9 2h6l1 4H8z"/>
+        </svg>
+      </motion.div>
+    ),
+    color: 'from-amber-500/10 to-orange-600/10',
+    borderColor: 'border-amber-500/20',
+    path: '/chat/pragmatism'
   }
 ];
 
@@ -110,7 +136,7 @@ interface FeatureGridProps {
 export const FeatureGrid: React.FC<FeatureGridProps> = ({ onIlluminationClick }) => {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-20">
         {features.map((feature, index) => {
           const cardContent = (
             <motion.div
@@ -239,7 +265,7 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({ onIlluminationClick })
             <p className="text-gray-300 text-lg leading-relaxed">
               MindVersee is your personal spiritual companion, drawing wisdom from the world's most profound sacred texts. 
               Our AI-powered platform analyzes your challenges and connects you with timeless teachings from the Bhagavad Gita, 
-              Quran, Bible, and other spiritual treasures.
+              Quran, Bible, Chanakya Niti, and other spiritual treasures.
             </p>
             <p className="text-gray-400 leading-relaxed">
               Through advanced natural language processing, we understand your emotional state and provide personalized guidance 
@@ -255,7 +281,7 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({ onIlluminationClick })
             transition={{ duration: 0.8, delay: 1.2 }}
           >
             {[
-              { number: "4", label: "Sacred Texts", icon: "📚" },
+              { number: "5", label: "Sacred Texts", icon: "📚" },
               { number: "150", label: "Starting Karma", icon: "⚡" },
               { number: "∞", label: "Wisdom Depth", icon: "🔮" },
               { number: "24/7", label: "Guidance", icon: "🌟" }

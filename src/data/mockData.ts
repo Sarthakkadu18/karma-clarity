@@ -55,6 +55,46 @@ export const mockVerses: Verse[] = [
     source: 'Bhagavad Gita',
     context: 'Chapter 2, Verse 48 - Krishna teaching about equanimity and detachment',
     tags: ['equanimity', 'balance', 'yoga', 'detachment']
+  },
+  {
+    id: '7',
+    text: 'राजा कालस्य कारणम्।',
+    translation: 'The king is the cause of the age.',
+    source: 'Chanakya Niti',
+    context: 'Chanakya teaches that leadership shapes the moral fabric of society',
+    tags: ['leadership', 'responsibility', 'governance', 'influence']
+  },
+  {
+    id: '8',
+    text: 'अर्थस्य पुरुषो दासो दासस्त्वर्थो न कस्यचित्।',
+    translation: 'A person is slave to wealth, but wealth is not slave to anyone.',
+    source: 'Chanakya Niti',
+    context: 'Warning about the power and dangers of attachment to material wealth',
+    tags: ['wealth', 'attachment', 'wisdom', 'materialism']
+  },
+  {
+    id: '9',
+    text: 'क्षणे नष्टे कुतो दिनं दिने नष्टे कुतो रात्रिः।',
+    translation: 'When a moment is lost, how can the day be achieved? When the day is lost, how can life be achieved?',
+    source: 'Chanakya Niti',
+    context: 'Chanakya emphasizing the importance of time management and presence',
+    tags: ['time', 'productivity', 'mindfulness', 'success']
+  },
+  {
+    id: '10',
+    text: 'दुर्जनेषु च सर्पेषु वरं सर्पो न दुर्जनः।',
+    translation: 'Between a wicked person and a serpent, the serpent is preferable.',
+    source: 'Chanakya Niti',
+    context: 'Teaching about discernment in relationships and avoiding toxic people',
+    tags: ['relationships', 'discernment', 'character', 'wisdom']
+  },
+  {
+    id: '11',
+    text: 'अतिसर्वत्र वर्जयेत्।',
+    translation: 'Excess in anything should be avoided.',
+    source: 'Chanakya Niti',
+    context: 'Principle of moderation and balance in all aspects of life',
+    tags: ['moderation', 'balance', 'discipline', 'wisdom']
   }
 ];
 

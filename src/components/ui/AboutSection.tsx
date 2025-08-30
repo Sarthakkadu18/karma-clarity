@@ -7,7 +7,7 @@ const features = [
   {
     icon: Book,
     title: 'Ancient Wisdom',
-    description: 'Access profound teachings from sacred texts including Bhagavad Gita, Quran, Bible, Dhammapada, and Tao Te Ching.'
+    description: 'Access profound teachings from sacred texts including Bhagavad Gita, Quran, Bible, Chanakya Niti, Dhammapada, and Tao Te Ching.'
   },
   {
     icon: Brain,
