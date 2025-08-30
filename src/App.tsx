@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
 import Kurukshetra from "./pages/chat/Kurukshetra";
 import Shifa from "./pages/chat/Shifa";
 import Iqra from "./pages/chat/Iqra";
@@ -21,6 +23,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/chat/kurukshetra" element={<Kurukshetra />} />
           <Route path="/chat/shifa" element={<Shifa />} />
           <Route path="/chat/iqra" element={<Iqra />} />
