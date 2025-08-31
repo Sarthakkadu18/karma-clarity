@@ -126,6 +126,30 @@ const features = [
     color: 'from-amber-500/10 to-orange-600/10',
     borderColor: 'border-amber-500/20',
     path: '/chat/pragmatism'
+  },
+  {
+    id: 'gururganth',
+    title: 'GuruGranth',
+    description: 'Sikh wisdom (Guru Granth Sahib)',
+    icon: (
+      <motion.div 
+        className="w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center shadow-2xl relative overflow-hidden"
+        whileHover={{ scale: 1.1, rotate: -5 }}
+        transition={{ type: "spring", stiffness: 300 }}
+      >
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-orange-600 opacity-0"
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        />
+        <svg className="w-8 h-8 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      </motion.div>
+    ),
+    color: 'from-yellow-500/10 to-orange-500/10',
+    borderColor: 'border-yellow-500/20',
+    path: '/chat/gururganth'
   }
 ];
 
@@ -136,7 +160,7 @@ interface FeatureGridProps {
 export const FeatureGrid: React.FC<FeatureGridProps> = ({ onIlluminationClick }) => {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-20">
         {features.map((feature, index) => {
           const cardContent = (
             <motion.div
@@ -265,7 +289,7 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({ onIlluminationClick })
             <p className="text-gray-300 text-lg leading-relaxed">
               MindVersee is your personal spiritual companion, drawing wisdom from the world's most profound sacred texts. 
               Our AI-powered platform analyzes your challenges and connects you with timeless teachings from the Bhagavad Gita, 
-              Quran, Bible, Chanakya Niti, and other spiritual treasures.
+              Quran, Bible, Chanakya Niti, Guru Granth Sahib, and other spiritual treasures.
             </p>
             <p className="text-gray-400 leading-relaxed">
               Through advanced natural language processing, we understand your emotional state and provide personalized guidance 
@@ -281,7 +305,7 @@ export const FeatureGrid: React.FC<FeatureGridProps> = ({ onIlluminationClick })
             transition={{ duration: 0.8, delay: 1.2 }}
           >
             {[
-              { number: "5", label: "Sacred Texts", icon: "📚" },
+              { number: "6", label: "Sacred Texts", icon: "📚" },
               { number: "150", label: "Starting Karma", icon: "⚡" },
               { number: "∞", label: "Wisdom Depth", icon: "🔮" },
               { number: "24/7", label: "Guidance", icon: "🌟" }

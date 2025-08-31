@@ -295,6 +295,102 @@ export const mockVerses: Verse[] = [
     source: 'Bible',
     context: 'Proverbs 3:6 - Divine guidance through acknowledgment',
     tags: ['acknowledgment', 'guidance', 'paths', 'direction']
+  },
+  {
+    id: '37',
+    text: 'ਸਤਿਗੁਰੁ ਨਾਨਕੁ ਪ੍ਰਗਟਿਆ ਮਿਟੀ ਧੁੰਧ ਜਗ ਚਾਨਣੁ ਹੋਆ॥',
+    translation: 'The True Guru Nanak appeared, and the mist cleared away. The world became enlightened.',
+    source: 'Guru Granth Sahib',
+    context: 'Bhai Gurdas Ji - Celebrating the appearance of Guru Nanak and spiritual enlightenment',
+    tags: ['enlightenment', 'guru', 'truth', 'clarity']
+  },
+  {
+    id: '38',
+    text: 'ਜਪੁ ਨਾਮੁ ਦਾਨੁ ਇਸਨਾਨੁ ਸਾਰੁ ਹੈ॥',
+    translation: 'Meditate on the Name, give in charity, and take your cleansing bath - this is the most excellent way.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Nanak Dev Ji - The three pillars of Sikh spiritual practice',
+    tags: ['meditation', 'charity', 'cleanliness', 'spiritual-practice']
+  },
+  {
+    id: '39',
+    text: 'ਸਭਨਾ ਜੀਆ ਕਾ ਇਕੁ ਦਾਤਾ ਸੋ ਮੈ ਵਿਸਰਿ ਨ ਜਾਈ॥',
+    translation: 'The One Lord is the Giver of all souls; may I never forget Him.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Nanak Dev Ji - Remembering the One Divine Source of all life',
+    tags: ['oneness', 'divine', 'remembrance', 'giver']
+  },
+  {
+    id: '40',
+    text: 'ਮਨੁ ਮਾਰੇ ਜੀਵਤ ਮਰੈ ਦਰਿ ਘਰਿ ਸੋਹਾਗਣਿ ਹੋਈ॥',
+    translation: 'One who conquers the mind, dies while yet alive, and becomes the blessed bride of the Lord.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Nanak Dev Ji - The spiritual death of ego leading to divine union',
+    tags: ['mind-control', 'ego', 'spiritual-death', 'divine-union']
+  },
+  {
+    id: '41',
+    text: 'ਸਰਬਸਮ ਤੇਰੇ ਨਾਮ ਵਿਟਿ ਕੁਰਬਾਣੀ ਤੇਰੀ ਦ੍ਰਿਸਟਿ॥',
+    translation: 'I am a sacrifice, a sacrifice to Your Name, and a sacrifice to Your Vision, O Lord.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Arjan Dev Ji - Complete surrender and devotion to the Divine',
+    tags: ['sacrifice', 'devotion', 'surrender', 'divine-vision']
+  },
+  {
+    id: '42',
+    text: 'ਤੂ ਠਾਕੁਰੁ ਤੁਮ ਪਹਿ ਅਰਦਾਸਿ॥ ਜੀਉ ਪਿੰਡੁ ਸਭੁ ਤੇਰੀ ਰਾਸਿ॥',
+    translation: 'You are my Lord and Master; to You, I offer my prayer. This soul and body are all Your wealth.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Arjan Dev Ji - Prayer of complete surrender and acknowledgment',
+    tags: ['prayer', 'master', 'surrender', 'divine-wealth']
+  },
+  {
+    id: '43',
+    text: 'ਜਿਸੁ ਸਿਮਰਤ ਸਭਿ ਕਿਲਵਿਖ ਨਾਸਹਿ ਪਿਤਰੀ ਹੋਇ ਉਧਾਰੋ॥',
+    translation: 'Remembering Him in meditation, all sins are erased, and ancestors are saved.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Arjan Dev Ji - The power of divine remembrance',
+    tags: ['meditation', 'forgiveness', 'salvation', 'ancestors']
+  },
+  {
+    id: '44',
+    text: 'ਨਾਨਕ ਨਾਮ ਚੜ੍ਹਦੀ ਕਲਾ ਤੇਰੇ ਭਾਣੇ ਸਰਬਤ ਦਾ ਭਲਾ॥',
+    translation: 'Nanak, with Naam comes high spirits; in Your will, O Lord, may everyone be blessed.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Nanak Dev Ji - Prayer for universal well-being and high spirits',
+    tags: ['naam', 'high-spirits', 'universal-welfare', 'divine-will']
+  },
+  {
+    id: '45',
+    text: 'ਵਾਹਿਗੁਰੂ ਵਾਹਿਗੁਰੂ ਵਾਹਿਗੁਰੂ ਵਾਹਿ ਜੀਉ॥',
+    translation: 'Wondrous Guru, Wondrous Guru, Wondrous Guru, Wondrous Lord.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Gobind Singh Ji - The Sikh mantra expressing wonder and praise',
+    tags: ['mantra', 'praise', 'wonder', 'guru']
+  },
+  {
+    id: '46',
+    text: 'ਸੋ ਸਤਿਗੁਰੁ ਪਿਆਰਾ ਮੇਰੈ ਨਾਲਿ ਹੈ ਜਿਥੈ ਜਾਇ ਬਹਾਲਾ॥',
+    translation: 'That beloved True Guru is always with me; wherever I go, He takes care of me.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Ram Das Ji - The constant presence and protection of the Guru',
+    tags: ['companionship', 'protection', 'guru-presence', 'care']
+  },
+  {
+    id: '47',
+    text: 'ਕਰਮੁ ਧਰਮੁ ਤੇਰਾ ਨਾਮੁ ਸਚਾ ਸਾਹਿਬ ਸਿਫਤਿ ਸੁਆਲਾ॥',
+    translation: 'Good deeds and righteousness come from Your True Name, O Lord; Your Praise is my prayer.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Nanak Dev Ji - True righteousness through divine remembrance',
+    tags: ['righteousness', 'good-deeds', 'true-name', 'praise']
+  },
+  {
+    id: '48',
+    text: 'ਜਿਨਿ ਗੁਰੂ ਦਿਤੋ ਸੁ ਨਮਸਕਾਰੁ ਸਿਰਿ ਧਰਿ ਮੰਨਿਆ॥',
+    translation: 'I bow in reverence to the One who gave me the Guru; I accept and honor Him with my head.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Angad Dev Ji - Gratitude for receiving the Guru\'s guidance',
+    tags: ['gratitude', 'reverence', 'guru-gift', 'honor']
   }
 ];
 

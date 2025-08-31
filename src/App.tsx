@@ -11,6 +11,7 @@ import Kurukshetra from "./pages/chat/Kurukshetra";
 import Shifa from "./pages/chat/Shifa";
 import Iqra from "./pages/chat/Iqra";
 import Pragmatism from "./pages/chat/Pragmatism";
+import GuruGranth from "./pages/chat/GuruGranth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/chat/shifa" element={<Shifa />} />
           <Route path="/chat/iqra" element={<Iqra />} />
           <Route path="/chat/pragmatism" element={<Pragmatism />} />
+          <Route path="/chat/gururganth" element={<GuruGranth />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
