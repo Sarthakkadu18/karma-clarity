@@ -95,6 +95,206 @@ export const mockVerses: Verse[] = [
     source: 'Chanakya Niti',
     context: 'Principle of moderation and balance in all aspects of life',
     tags: ['moderation', 'balance', 'discipline', 'wisdom']
+  },
+  {
+    id: '12',
+    text: 'श्रद्धावाँल्लभते ज्ञानं तत्परः संयतेन्द्रियः।',
+    translation: 'A faithful person who is dedicated to wisdom and who subdues his senses gains knowledge, and having gained knowledge he quickly attains the supreme peace.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 4, Verse 39 - Krishna describing the path to knowledge',
+    tags: ['faith', 'knowledge', 'peace', 'self-control']
+  },
+  {
+    id: '13',
+    text: 'यदा यदा हि धर्मस्य ग्लानिर्भवति भारत। अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥',
+    translation: 'Whenever there is decline in righteousness and increase in unrighteousness, O Arjuna, at that time I manifest myself on earth.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 4, Verse 7 - Krishna explaining divine incarnation',
+    tags: ['righteousness', 'divine', 'justice', 'protection']
+  },
+  {
+    id: '14',
+    text: 'सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज। अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥',
+    translation: 'Abandon all varieties of religion and just surrender unto Me. I shall deliver you from all sinful reactions. Do not fear.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 18, Verse 66 - Krishna\'s final teaching to Arjuna',
+    tags: ['surrender', 'liberation', 'fearlessness', 'grace']
+  },
+  {
+    id: '15',
+    text: 'وَاللَّهُ يَدْعُو إِلَىٰ دَارِ السَّلَامِ وَيَهْدِي مَن يَشَاءُ إِلَىٰ صِرَاطٍ مُّسْتَقِيمٍ',
+    translation: 'And Allah invites to the Home of Peace and guides whom He wills to a straight path.',
+    source: 'Quran',
+    context: 'Surah Yunus (10:25) - Divine invitation to peace and guidance',
+    tags: ['peace', 'guidance', 'divine-call', 'straight-path']
+  },
+  {
+    id: '16',
+    text: 'وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِّلْعَالَمِينَ',
+    translation: 'And We have not sent you, [O Muhammad], except as a mercy to the worlds.',
+    source: 'Quran',
+    context: 'Surah Al-Anbiya (21:107) - The universal mercy of divine guidance',
+    tags: ['mercy', 'universal', 'compassion', 'guidance']
+  },
+  {
+    id: '17',
+    text: 'وَاعْبُدُوا اللَّهَ وَلَا تُشْرِكُوا بِهِ شَيْئًا وَبِالْوَالِدَيْنِ إِحْسَانًا',
+    translation: 'Worship Allah and associate nothing with Him, and be good to parents.',
+    source: 'Quran',
+    context: 'Surah An-Nisa (4:36) - Foundation of worship and family relationships',
+    tags: ['worship', 'parents', 'respect', 'monotheism']
+  },
+  {
+    id: '18',
+    text: 'إِنَّ مَعَ الْعُسْرِ يُسْرًا',
+    translation: 'Indeed, with hardship comes ease.',
+    source: 'Quran',
+    context: 'Surah Ash-Sharh (94:6) - Divine promise of relief after difficulty',
+    tags: ['hope', 'perseverance', 'relief', 'patience']
+  },
+  {
+    id: '19',
+    text: 'Trust in the Lord with all your heart and lean not on your own understanding.',
+    translation: 'Trust in the Lord with all your heart and lean not on your own understanding.',
+    source: 'Bible',
+    context: 'Proverbs 3:5 - Wisdom about faith and trust in divine guidance',
+    tags: ['trust', 'faith', 'humility', 'divine-wisdom']
+  },
+  {
+    id: '20',
+    text: 'I can do all things through Christ who strengthens me.',
+    translation: 'I can do all things through Christ who strengthens me.',
+    source: 'Bible',
+    context: 'Philippians 4:13 - Paul\'s declaration of strength through faith',
+    tags: ['strength', 'faith', 'empowerment', 'perseverance']
+  },
+  {
+    id: '21',
+    text: 'The Lord is my shepherd; I shall not want.',
+    translation: 'The Lord is my shepherd; I shall not want.',
+    source: 'Bible',
+    context: 'Psalm 23:1 - David\'s expression of divine care and provision',
+    tags: ['protection', 'provision', 'care', 'trust']
+  },
+  {
+    id: '22',
+    text: 'For God so loved the world that he gave his one and only Son.',
+    translation: 'For God so loved the world that he gave his one and only Son.',
+    source: 'Bible',
+    context: 'John 3:16 - The foundation of divine love and sacrifice',
+    tags: ['love', 'sacrifice', 'salvation', 'universal']
+  },
+  {
+    id: '23',
+    text: 'Love your enemies and pray for those who persecute you.',
+    translation: 'Love your enemies and pray for those who persecute you.',
+    source: 'Bible',
+    context: 'Matthew 5:44 - Jesus teaching about radical love and forgiveness',
+    tags: ['love', 'forgiveness', 'enemies', 'prayer']
+  },
+  {
+    id: '24',
+    text: 'विद्या ददाति विनयं विनयाद् याति पात्रताम्। पात्रत्वाद् धनमाप्नोति धनाद् धर्मं ततः सुखम्॥',
+    translation: 'Education gives humility, from humility comes worthiness, from worthiness one gets wealth, from wealth dharma, and from dharma happiness.',
+    source: 'Chanakya Niti',
+    context: 'The progressive stages of education leading to ultimate happiness',
+    tags: ['education', 'humility', 'worthiness', 'happiness']
+  },
+  {
+    id: '25',
+    text: 'आपदर्थे धनं रक्षेद् दारान् रक्षेद् धनैरपि। आत्मानं सततं रक्षेद् दारैरपि धनैरपि॥',
+    translation: 'Save money for times of distress, protect your wife with money, but always protect yourself even at the cost of wife and money.',
+    source: 'Chanakya Niti',
+    context: 'Chanakya\'s teaching on priorities and self-preservation',
+    tags: ['priorities', 'self-preservation', 'wisdom', 'practical']
+  },
+  {
+    id: '26',
+    text: 'सुखस्य मूलं धर्मः धर्मस्य मूलमर्थः। अर्थस्य मूलं राज्यं राज्यस्य मूलमिन्द्रियजयः॥',
+    translation: 'The root of happiness is dharma, the root of dharma is wealth, the root of wealth is state, and the root of state is control over senses.',
+    source: 'Chanakya Niti',
+    context: 'The foundational hierarchy of governance and personal development',
+    tags: ['happiness', 'dharma', 'governance', 'self-control']
+  },
+  {
+    id: '27',
+    text: 'त्यज दुर्जनसंसर्गं भज साधुसमागमम्। कुरु पुण्यमहोरात्रं स्मर नित्यमनित्यताम्॥',
+    translation: 'Give up the company of wicked people, seek the company of good people, do good deeds day and night, and always remember the impermanence of life.',
+    source: 'Chanakya Niti',
+    context: 'Guidance on choosing companions and living righteously',
+    tags: ['companions', 'righteousness', 'impermanence', 'good-deeds']
+  },
+  {
+    id: '28',
+    text: 'अनेकसंशयोच्छेदि परोक्षार्थस्य दर्शकम्। सर्वस्य लोचनं शास्त्रं यस्य नास्त्यन्ध एव सः॥',
+    translation: 'Knowledge removes many doubts, reveals hidden meanings, and acts as eyes for everyone. One without knowledge is truly blind.',
+    source: 'Chanakya Niti',
+    context: 'The importance of knowledge and learning in life',
+    tags: ['knowledge', 'wisdom', 'learning', 'insight']
+  },
+  {
+    id: '29',
+    text: 'मनसा चिन्तितं कार्यं वाचा नैव प्रकाशयेत्। मन्त्रेण रक्षयेद् गूढं कार्ये चापि नियोजयेत्॥',
+    translation: 'What is planned in the mind should not be revealed in speech. Keep plans secret like a mantra and execute them in action.',
+    source: 'Chanakya Niti',
+    context: 'Strategic wisdom about planning and execution',
+    tags: ['strategy', 'secrecy', 'planning', 'execution']
+  },
+  {
+    id: '30',
+    text: 'गुणी गुणं वेत्ति न वेत्ति निर्गुणः बली बलं वेत्ति न वेत्ति निर्बलः।',
+    translation: 'The virtuous recognize virtue while the virtueless do not; the strong recognize strength while the weak do not.',
+    source: 'Chanakya Niti',
+    context: 'Understanding that like recognizes like in character and ability',
+    tags: ['virtue', 'recognition', 'strength', 'character']
+  },
+  {
+    id: '31',
+    text: 'मत्तः परतरं नान्यत् किञ्चिदस्ति धनञ्जय। मयि सर्वमिदं प्रोतं सूत्रे मणिगणा इव॥',
+    translation: 'There is nothing higher than Me, O Arjuna. All this is strung on Me like pearls on a thread.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 7, Verse 7 - Krishna revealing the ultimate reality',
+    tags: ['supreme', 'unity', 'connection', 'ultimate-reality']
+  },
+  {
+    id: '32',
+    text: 'अहं सर्वस्य प्रभवो मत्तः सर्वं प्रवर्तते। इति मत्वा भजन्ते मां बुधा भावसमन्विताः॥',
+    translation: 'I am the source of all spiritual and material worlds. Everything emanates from Me. The wise who know this perfectly engage in My devotional service with great faith.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 10, Verse 8 - The source of all creation',
+    tags: ['source', 'creation', 'devotion', 'wisdom']
+  },
+  {
+    id: '33',
+    text: 'وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ',
+    translation: 'And that there is nothing for man except what he strives for.',
+    source: 'Quran',
+    context: 'Surah An-Najm (53:39) - The principle of earning through effort',
+    tags: ['effort', 'striving', 'reward', 'responsibility']
+  },
+  {
+    id: '34',
+    text: 'وَمَن تَوَكَّلَ عَلَى اللَّهِ فَهُوَ حَسْبُهُ',
+    translation: 'And whoever relies upon Allah - then He is sufficient for him.',
+    source: 'Quran',
+    context: 'Surah At-Talaq (65:3) - The sufficiency of divine trust',
+    tags: ['trust', 'reliance', 'sufficiency', 'faith']
+  },
+  {
+    id: '35',
+    text: 'Cast all your anxiety on him because he cares for you.',
+    translation: 'Cast all your anxiety on him because he cares for you.',
+    source: 'Bible',
+    context: '1 Peter 5:7 - Divine care and concern for believers',
+    tags: ['anxiety', 'care', 'trust', 'relief']
+  },
+  {
+    id: '36',
+    text: 'In all your ways acknowledge him, and he will make your paths straight.',
+    translation: 'In all your ways acknowledge him, and he will make your paths straight.',
+    source: 'Bible',
+    context: 'Proverbs 3:6 - Divine guidance through acknowledgment',
+    tags: ['acknowledgment', 'guidance', 'paths', 'direction']
   }
 ];
 
