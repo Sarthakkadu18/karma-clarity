@@ -391,6 +391,299 @@ export const mockVerses: Verse[] = [
     source: 'Guru Granth Sahib',
     context: 'Guru Angad Dev Ji - Gratitude for receiving the Guru\'s guidance',
     tags: ['gratitude', 'reverence', 'guru-gift', 'honor']
+  },
+  // Expanded Bhagavad Gita verses for comprehensive guidance
+  {
+    id: '49',
+    text: 'बुद्धिर्ज्ञानमसम्मोहः क्षमा सत्यं दमः शमः।',
+    translation: 'Intelligence, knowledge, freedom from doubt and delusion, forgiveness, truthfulness, control of the senses and control of the mind.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 10, Verse 4-5 - Divine qualities in human beings',
+    tags: ['intelligence', 'knowledge', 'truth', 'self-control']
+  },
+  {
+    id: '50',
+    text: 'अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते। तेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥',
+    translation: 'To those who are constantly devoted and who always remember Me with love, I give the understanding by which they can come to Me.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 9, Verse 22 - Divine care for devotees',
+    tags: ['devotion', 'love', 'divine-care', 'protection']
+  },
+  {
+    id: '51',
+    text: 'श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्।',
+    translation: 'Better is one\'s own dharma, though imperfectly performed, than the dharma of another well performed.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 3, Verse 35 - The importance of following one\'s own path',
+    tags: ['dharma', 'authenticity', 'individual-path', 'duty']
+  },
+  {
+    id: '52',
+    text: 'न हि ज्ञानेन सदृशं पवित्रमिह विद्यते।',
+    translation: 'In this world, there is nothing so sublime and pure as transcendental knowledge.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 4, Verse 38 - The purity of spiritual knowledge',
+    tags: ['knowledge', 'purity', 'transcendental', 'sublime']
+  },
+  {
+    id: '53',
+    text: 'यस्त्वात्मरतिरेव स्यादात्मतृप्तश्च मानवः।',
+    translation: 'One who rejoices in the self, who is illumined in the self, who finds satisfaction in the self alone.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 3, Verse 17 - Self-realization and contentment',
+    tags: ['self-realization', 'contentment', 'inner-joy', 'satisfaction']
+  },
+  {
+    id: '54',
+    text: 'योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय।',
+    translation: 'Perform your duty equipoised, O Arjuna, abandoning all attachment to success or failure.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 2, Verse 48 - The practice of karma yoga',
+    tags: ['karma-yoga', 'equanimity', 'duty', 'detachment']
+  },
+  {
+    id: '55',
+    text: 'निर्मानमोहा जितसङ्गदोषा अध्यात्मनित्या विनिवृत्तकामाः।',
+    translation: 'Those who are free from pride and delusion, who have conquered the evil of attachment, who dwell constantly in the Self.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 15, Verse 5 - Qualities of the liberated soul',
+    tags: ['liberation', 'pride', 'attachment', 'self-dwelling']
+  },
+  {
+    id: '56',
+    text: 'अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः।',
+    translation: 'I shall deliver you from all sinful reactions. Do not fear.',
+    source: 'Bhagavad Gita',
+    context: 'Chapter 18, Verse 66 - Divine promise of liberation',
+    tags: ['liberation', 'fearlessness', 'divine-promise', 'grace']
+  },
+  // More Quran verses for comprehensive guidance
+  {
+    id: '57',
+    text: 'وَلَا تَيْأَسُوا مِن رَّوْحِ اللَّهِ إِنَّهُ لَا يَيْأَسُ مِن رَّوْحِ اللَّهِ إِلَّا الْقَوْمُ الْكَافِرُونَ',
+    translation: 'And do not despair of relief from Allah. Indeed, no one despairs of relief from Allah except the disbelieving people.',
+    source: 'Quran',
+    context: 'Surah Yusuf (12:87) - Hope in divine mercy',
+    tags: ['hope', 'relief', 'despair', 'mercy']
+  },
+  {
+    id: '58',
+    text: 'وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ',
+    translation: 'So whoever does an atom\'s weight of good will see it.',
+    source: 'Quran',
+    context: 'Surah Az-Zalzalah (99:7) - The value of small good deeds',
+    tags: ['good-deeds', 'reward', 'justice', 'accountability']
+  },
+  {
+    id: '59',
+    text: 'وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ',
+    translation: 'And He is with you wherever you are.',
+    source: 'Quran',
+    context: 'Surah Al-Hadid (57:4) - Divine presence everywhere',
+    tags: ['presence', 'companionship', 'everywhere', 'comfort']
+  },
+  {
+    id: '60',
+    text: 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا إِنَّ مَعَ الْعُسْرِ يُسْرًا',
+    translation: 'Indeed, with hardship comes ease. Indeed, with hardship comes ease.',
+    source: 'Quran',
+    context: 'Surah Ash-Sharh (94:5-6) - Promise of relief after difficulty',
+    tags: ['hardship', 'ease', 'relief', 'promise']
+  },
+  {
+    id: '61',
+    text: 'وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ',
+    translation: 'And when My servants ask you concerning Me, indeed I am near.',
+    source: 'Quran',
+    context: 'Surah Al-Baqarah (2:186) - Divine closeness to humanity',
+    tags: ['closeness', 'prayer', 'divine-response', 'accessibility']
+  },
+  {
+    id: '62',
+    text: 'وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ',
+    translation: 'And whoever relies upon Allah - then He is sufficient for him.',
+    source: 'Quran',
+    context: 'Surah At-Talaq (65:3) - Divine sufficiency for believers',
+    tags: ['reliance', 'sufficiency', 'trust', 'divine-support']
+  },
+  {
+    id: '63',
+    text: 'يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ',
+    translation: 'O you who believe! Seek help through patience and prayer.',
+    source: 'Quran',
+    context: 'Surah Al-Baqarah (2:153) - Sources of strength in difficulty',
+    tags: ['patience', 'prayer', 'help', 'strength']
+  },
+  {
+    id: '64',
+    text: 'وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ',
+    translation: 'And I did not create the jinn and mankind except to worship Me.',
+    source: 'Quran',
+    context: 'Surah Adh-Dhariyat (51:56) - The purpose of creation',
+    tags: ['purpose', 'worship', 'creation', 'meaning']
+  },
+  // More Bible verses for comprehensive guidance
+  {
+    id: '65',
+    text: 'Weeping may endure for a night, but joy comes in the morning.',
+    translation: 'Weeping may endure for a night, but joy comes in the morning.',
+    source: 'Bible',
+    context: 'Psalm 30:5 - Hope after sorrow',
+    tags: ['sorrow', 'joy', 'hope', 'renewal']
+  },
+  {
+    id: '66',
+    text: 'Come unto me, all ye that labour and are heavy laden, and I will give you rest.',
+    translation: 'Come unto me, all ye that labour and are heavy laden, and I will give you rest.',
+    source: 'Bible',
+    context: 'Matthew 11:28 - Jesus offering rest to the weary',
+    tags: ['rest', 'burden', 'comfort', 'invitation']
+  },
+  {
+    id: '67',
+    text: 'And we know that in all things God works for the good of those who love him.',
+    translation: 'And we know that in all things God works for the good of those who love him.',
+    source: 'Bible',
+    context: 'Romans 8:28 - Divine providence in all circumstances',
+    tags: ['providence', 'good', 'love', 'faith']
+  },
+  {
+    id: '68',
+    text: 'The Lord your God is with you, the Mighty Warrior who saves.',
+    translation: 'The Lord your God is with you, the Mighty Warrior who saves.',
+    source: 'Bible',
+    context: 'Zephaniah 3:17 - God as protector and savior',
+    tags: ['protection', 'salvation', 'warrior', 'presence']
+  },
+  {
+    id: '69',
+    text: 'Fear not, for I am with you; be not dismayed, for I am your God.',
+    translation: 'Fear not, for I am with you; be not dismayed, for I am your God.',
+    source: 'Bible',
+    context: 'Isaiah 41:10 - Divine reassurance against fear',
+    tags: ['fear', 'reassurance', 'dismay', 'presence']
+  },
+  {
+    id: '70',
+    text: 'He heals the brokenhearted and binds up their wounds.',
+    translation: 'He heals the brokenhearted and binds up their wounds.',
+    source: 'Bible',
+    context: 'Psalm 147:3 - Divine healing for emotional pain',
+    tags: ['healing', 'brokenhearted', 'wounds', 'comfort']
+  },
+  {
+    id: '71',
+    text: 'Therefore do not worry about tomorrow, for tomorrow will worry about itself.',
+    translation: 'Therefore do not worry about tomorrow, for tomorrow will worry about itself.',
+    source: 'Bible',
+    context: 'Matthew 6:34 - Jesus teaching about present-moment awareness',
+    tags: ['worry', 'tomorrow', 'present-moment', 'anxiety']
+  },
+  {
+    id: '72',
+    text: 'The Lord is close to the brokenhearted and saves those who are crushed in spirit.',
+    translation: 'The Lord is close to the brokenhearted and saves those who are crushed in spirit.',
+    source: 'Bible',
+    context: 'Psalm 34:18 - Divine comfort in emotional distress',
+    tags: ['closeness', 'brokenhearted', 'crushed-spirit', 'salvation']
+  },
+  // More Chanakya Niti verses for practical wisdom
+  {
+    id: '73',
+    text: 'काकचेष्टा बकोध्यानं श्वाननिद्रा तथैव च। अल्पाहारी गृहत्यागी विद्यार्थी पञ्चलक्षणम्॥',
+    translation: 'A student should have the eagerness of a crow, meditation of a crane, sleep of a dog, eat little food, and leave home for learning.',
+    source: 'Chanakya Niti',
+    context: 'Five qualities essential for a sincere student',
+    tags: ['learning', 'discipline', 'focus', 'dedication']
+  },
+  {
+    id: '74',
+    text: 'मूर्खाणां पण्डिता द्वेष्या उपकारी निरुत्साहः।',
+    translation: 'The foolish hate the learned, those who help others lose enthusiasm.',
+    source: 'Chanakya Niti',
+    context: 'Understanding human nature and social dynamics',
+    tags: ['wisdom', 'foolishness', 'help', 'social-dynamics']
+  },
+  {
+    id: '75',
+    text: 'सत्यं माता पिता ज्ञानं धर्मो भ्राता दया सखा।',
+    translation: 'Truth is the mother, knowledge is the father, dharma is the brother, and compassion is the friend.',
+    source: 'Chanakya Niti',
+    context: 'The spiritual family that guides a person',
+    tags: ['truth', 'knowledge', 'dharma', 'compassion']
+  },
+  {
+    id: '76',
+    text: 'शान्तिः परमं सुखम्।',
+    translation: 'Peace is the highest happiness.',
+    source: 'Chanakya Niti',
+    context: 'The ultimate goal of all endeavors',
+    tags: ['peace', 'happiness', 'ultimate-goal', 'tranquility']
+  },
+  {
+    id: '77',
+    text: 'परोक्षे कार्यहन्तारं प्रत्यक्षे प्रियवादिनम्।',
+    translation: 'One who harms your work behind your back but speaks sweetly to your face.',
+    source: 'Chanakya Niti',
+    context: 'Warning about deceptive people',
+    tags: ['deception', 'betrayal', 'sweet-talk', 'caution']
+  },
+  {
+    id: '78',
+    text: 'धर्मार्थकाममोक्षाणां यस्यैकोऽपि न विद्यते।',
+    translation: 'A person who lacks dharma, wealth, pleasure, and liberation - such a person is like a beast.',
+    source: 'Chanakya Niti',
+    context: 'The four goals of human life',
+    tags: ['dharma', 'wealth', 'pleasure', 'liberation']
+  },
+  // More Guru Granth Sahib verses for spiritual guidance
+  {
+    id: '79',
+    text: 'ਏਕੁ ਨਾਮੁ ਹੁਕਮੁ ਮਨਿ ਵਸੈ ਗੁਰਮੁਖਿ ਕਿਸਬੁ ਕਮਾਇ॥',
+    translation: 'Let the One Name and His Command abide within your mind; as Gurmukh, practice righteousness.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Nanak Dev Ji - Living according to divine will',
+    tags: ['divine-name', 'command', 'righteousness', 'gurmukh']
+  },
+  {
+    id: '80',
+    text: 'ਸਚੁ ਵਰਤੁ ਸੰਤੋਖੁ ਤੀਰਥੁ ਗਿਆਨੁ ਧਿਆਨੁ ਇਸਨਾਨੁ॥',
+    translation: 'Let truth be your fast, contentment your pilgrimage place, spiritual wisdom and meditation your cleansing bath.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Nanak Dev Ji - True spiritual practices',
+    tags: ['truth', 'contentment', 'wisdom', 'meditation']
+  },
+  {
+    id: '81',
+    text: 'ਜੋ ਵਾਹਿਗੁਰੂ ਕੇ ਸਿਮਰਨ ਮਹਿ ਮਸਤ ਰਹਤੇ ਸੇ ਆਨੰਦੁ ਮਾਣਤੇ॥',
+    translation: 'Those who remain intoxicated with the remembrance of Waheguru enjoy supreme bliss.',
+    source: 'Guru Granth Sahib',
+    context: 'The joy of divine remembrance and meditation',
+    tags: ['remembrance', 'intoxication', 'bliss', 'waheguru']
+  },
+  {
+    id: '82',
+    text: 'ਸੇਵਾ ਕਰਤ ਹੋਏ ਨਿਹਕਾਮੀ ਤਿਸ ਕਉ ਮਿਲਤ ਨਿਧਾਨੁ॥',
+    translation: 'One who serves selflessly finds the treasure of divine realization.',
+    source: 'Guru Granth Sahib',
+    context: 'The reward of selfless service (seva)',
+    tags: ['seva', 'selfless', 'treasure', 'realization']
+  },
+  {
+    id: '83',
+    text: 'ਦੁਖੁ ਦਾਰੂ ਸੁਖੁ ਰੋਗੁ ਭਇਆ ਜਾ ਸੁਖੁ ਤਾਮਿ ਨ ਹੋਈ॥',
+    translation: 'Suffering is the medicine, and pleasure is the disease, when there is pleasure, there is no longing for God.',
+    source: 'Guru Granth Sahib',
+    context: 'Guru Nanak Dev Ji - Understanding the spiritual purpose of suffering',
+    tags: ['suffering', 'medicine', 'pleasure', 'longing']
+  },
+  {
+    id: '84',
+    text: 'ਨਾਨਕ ਨਾਮੁ ਧਿਆਇ ਤੂ ਸਭ ਸੁਖ ਪਾਵਹਿ ਸਾਰੇ॥',
+    translation: 'O Nanak, meditate on the Name, and you shall obtain all happiness and peace.',
+    source: 'Guru Granth Sahib',
+    context: 'The promise of peace through divine meditation',
+    tags: ['meditation', 'name', 'happiness', 'peace']
   }
 ];
 
