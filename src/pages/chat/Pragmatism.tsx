@@ -7,6 +7,7 @@ import { Navigation } from '@/components/ui/Navigation';
 import { motion } from 'framer-motion';
 import { useAuthStore } from '@/stores/authStore';
 import { Navigate } from 'react-router-dom';
+import { getChanakyaResponse } from '@/utils/intelligentResponse';
 
 interface Message {
   id: string;
@@ -57,17 +58,18 @@ const Pragmatism = () => {
     setInputValue('');
     setIsLoading(true);
 
-    // Simulate AI response with Chanakya Niti wisdom
+    // Get intelligent response based on user input
     setTimeout(() => {
+      const response = getChanakyaResponse(inputValue);
       const chanakyaResponse: Message = {
         id: (Date.now() + 1).toString(),
         sender: 'chanakya',
-        content: `Wisdom flows from understanding the true nature of your situation. As I have taught: "अतिसर्वत्र वर्जयेत्" - Excess in anything should be avoided. Your challenge requires both strategic thinking and measured action. Consider these three principles: First, assess your position truthfully without emotion clouding judgment. Second, identify the key stakeholders and their motivations - for understanding others' interests is the foundation of influence. Third, act with patience and persistence, for "क्षणे नष्टे कुतो दिनं" - when a moment is lost, how can the day be achieved? Time and timing are your greatest allies. What specific aspect of this guidance would you like to explore deeper?`,
+        content: response,
         timestamp: new Date()
       };
       setMessages(prev => [...prev, chanakyaResponse]);
       setIsLoading(false);
-    }, 2000);
+    }, 1000 + Math.random() * 2000);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

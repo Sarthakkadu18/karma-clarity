@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Send, Crown, User } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
+import { getKrishnaResponse } from '@/utils/intelligentResponse';
 
 interface Message {
   id: string;
@@ -55,17 +56,18 @@ const Kurukshetra: React.FC = () => {
     setInputValue('');
     setIsLoading(true);
 
-    // Simulate AI response with Bhagavad Gita wisdom
+    // Get intelligent response based on user input
     setTimeout(() => {
+      const response = getKrishnaResponse(inputValue);
       const krishnaResponse: Message = {
         id: (Date.now() + 1).toString(),
-        content: `Arjun, your question touches the essence of dharma. As I spoke to you on the battlefield of Kurukshetra: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।" - You have the right to perform your duty, but not to the fruits of action. Let this wisdom guide you through your current challenge. The path of righteousness may seem difficult, but it leads to true peace and liberation.`,
+        content: response,
         sender: 'krishna',
         timestamp: new Date(),
       };
       setMessages(prev => [...prev, krishnaResponse]);
       setIsLoading(false);
-    }, 2000);
+    }, 1000 + Math.random() * 2000);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

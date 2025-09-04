@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Send, Crown, User } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
+import { getGuruResponse } from '@/utils/intelligentResponse';
 
 interface Message {
   id: string;
@@ -55,17 +56,18 @@ const GuruGranth: React.FC = () => {
     setInputValue('');
     setIsLoading(true);
 
-    // Simulate AI response with Guru Granth Sahib wisdom
+    // Get intelligent response based on user input
     setTimeout(() => {
+      const response = getGuruResponse(inputValue);
       const guruResponse: Message = {
         id: (Date.now() + 1).toString(),
-        content: `The Guru's wisdom illuminates your path, dear soul. As written in the sacred Granth: "ਜਪੁ ਨਾਮੁ ਦਾਨੁ ਇਸਨਾਨੁ ਸਾਰੁ ਹੈ" - Meditate on the Name, give in charity, and take your cleansing bath - this is the most excellent way. Remember that "ਸੋ ਸਤਿਗੁਰੁ ਪਿਆਰਾ ਮੇਰੈ ਨਾਲਿ ਹੈ" - the beloved True Guru is always with you. Trust in Waheguru's plan, practice Naam Simran, and serve others with compassion. ਸਰਬਤ ਦਾ ਭਲਾ - may all be blessed!`,
+        content: response,
         sender: 'guru',
         timestamp: new Date(),
       };
       setMessages(prev => [...prev, guruResponse]);
       setIsLoading(false);
-    }, 2000);
+    }, 1000 + Math.random() * 2000);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

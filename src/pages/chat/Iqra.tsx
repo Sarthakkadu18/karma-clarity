@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Send, Cross, User } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
+import { getBiblicalResponse } from '@/utils/intelligentResponse';
 
 interface Message {
   id: string;
@@ -55,17 +56,18 @@ const Iqra: React.FC = () => {
     setInputValue('');
     setIsLoading(true);
 
-    // Simulate AI response with Biblical wisdom
+    // Get intelligent response based on user input
     setTimeout(() => {
+      const response = getBiblicalResponse(inputValue);
       const guideResponse: Message = {
         id: (Date.now() + 1).toString(),
-        content: `Your heart's cry does not go unheard, dear friend. The Bible reminds us in Psalm 46:10 to "Be still, and know that I am God." In times of trouble, remember that "And we know that in all things God works for the good of those who love him" (Romans 8:28). Your current struggle is not the end of your story. God has plans for you - plans to prosper you and not to harm you, to give you hope and a future (Jeremiah 29:11). Trust in His timing, pray without ceasing, and let His peace that surpasses all understanding guard your heart and mind.`,
+        content: response,
         sender: 'guide',
         timestamp: new Date(),
       };
       setMessages(prev => [...prev, guideResponse]);
       setIsLoading(false);
-    }, 2000);
+    }, 1000 + Math.random() * 2000);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

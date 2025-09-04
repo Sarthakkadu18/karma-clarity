@@ -193,3 +193,24 @@ export function getIntelligentResponse(userInput: string, persona: string): stri
   const selectedVerse = relevantVerses[0];
   return generateContextualResponse(selectedVerse, userInput, persona);
 }
+
+// Specific persona response functions
+export function getKrishnaResponse(userInput: string): string {
+  return getIntelligentResponse(userInput, 'krishna');
+}
+
+export function getIslamicResponse(userInput: string): string {
+  return getIntelligentResponse(userInput, 'guide');
+}
+
+export function getBiblicalResponse(userInput: string): string {
+  return getIntelligentResponse(userInput, 'biblicalGuide');
+}
+
+export function getGuruResponse(userInput: string): string {
+  return getIntelligentResponse(userInput, 'guru');
+}
+
+export function getChanakyaResponse(userInput: string): string {
+  return getIntelligentResponse(userInput, 'chanakya');
+}

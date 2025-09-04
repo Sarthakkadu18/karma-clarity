@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Send, Heart, User } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
+import { getIslamicResponse } from '@/utils/intelligentResponse';
 
 interface Message {
   id: string;
@@ -55,17 +56,18 @@ const Shifa: React.FC = () => {
     setInputValue('');
     setIsLoading(true);
 
-    // Simulate AI response with Quranic wisdom
+    // Get intelligent response based on user input
     setTimeout(() => {
+      const response = getIslamicResponse(inputValue);
       const guideResponse: Message = {
         id: (Date.now() + 1).toString(),
-        content: `SubhanAllah, your question reflects a sincere heart seeking guidance. The Quran teaches us: "وَبَشِّرِ الصَّابِرِينَ" - And give good tidings to the patient. Allah (SWT) tests us to strengthen our faith and character. Remember that after every hardship comes ease, as mentioned in Surah Ash-Sharh. Trust in Allah's wisdom, make sincere dua, and take positive action while placing your reliance upon Him. May Allah grant you healing and peace.`,
+        content: response,
         sender: 'guide',
         timestamp: new Date(),
       };
       setMessages(prev => [...prev, guideResponse]);
       setIsLoading(false);
-    }, 2000);
+    }, 1000 + Math.random() * 2000);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
