@@ -8,6 +8,11 @@ import { motion } from 'framer-motion';
 import { useAuthStore } from '@/stores/authStore';
 import { Navigate } from 'react-router-dom';
 import { getChanakyaResponse } from '@/utils/intelligentResponse';
+import { 
+  trackInteraction, 
+  analyzeEmotionsForTracking, 
+  detectStateOfMind 
+} from '@/utils/interactionTracker';
 
 interface Message {
   id: string;
@@ -59,8 +64,19 @@ const Pragmatism = () => {
     setIsLoading(true);
 
     // Get intelligent response based on user input
-    setTimeout(() => {
-      const response = getChanakyaResponse(inputValue);
+    setTimeout(async () => {
+      const response = await getChanakyaResponse(inputValue);
+      
+      // Track the interaction
+      trackInteraction({
+        feature: 'pragmatism',
+        type: 'chat_message',
+        stateOfMind: detectStateOfMind(inputValue),
+        emotions: analyzeEmotionsForTracking(inputValue),
+        communication: inputValue,
+        response: response
+      });
+      
       const chanakyaResponse: Message = {
         id: (Date.now() + 1).toString(),
         sender: 'chanakya',

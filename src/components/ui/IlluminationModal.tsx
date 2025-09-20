@@ -7,6 +7,11 @@ import { Badge } from '@/components/ui/badge';
 import { useAuthStore } from '@/stores/authStore';
 import { searchVerses, Verse } from '@/data/mockData';
 import { 
+  trackInteraction, 
+  analyzeEmotionsForTracking, 
+  detectStateOfMind 
+} from '@/utils/interactionTracker';
+import { 
   X, 
   Mic, 
   Send, 
@@ -125,6 +130,18 @@ Consider practicing mindfulness, connecting with your inner wisdom, and taking o
       const relevantVerses = searchVerses(problem);
       const selectedVerse = relevantVerses[0] || searchVerses('peace')[0];
       const guidance = generateGuidance(selectedVerse, problem);
+
+      // Track the interaction
+      trackInteraction({
+        feature: 'illumination',
+        type: 'guidance_request',
+        stateOfMind: detectStateOfMind(problem),
+        emotions: analyzeEmotionsForTracking(problem),
+        communication: problem,
+        response: guidance,
+        verseSource: selectedVerse.source,
+        verseText: selectedVerse.translation
+      });
 
       setResults({
         emotions,

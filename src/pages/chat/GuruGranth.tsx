@@ -8,6 +8,11 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Send, Crown, User } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
 import { getGuruResponse } from '@/utils/intelligentResponse';
+import { 
+  trackInteraction, 
+  analyzeEmotionsForTracking, 
+  detectStateOfMind 
+} from '@/utils/interactionTracker';
 
 interface Message {
   id: string;
@@ -59,6 +64,17 @@ const GuruGranth: React.FC = () => {
     // Get intelligent response based on user input
     setTimeout(() => {
       const response = getGuruResponse(inputValue);
+      
+      // Track the interaction
+      trackInteraction({
+        feature: 'gurugranth',
+        type: 'chat_message',
+        stateOfMind: detectStateOfMind(inputValue),
+        emotions: analyzeEmotionsForTracking(inputValue),
+        communication: inputValue,
+        response: response
+      });
+      
       const guruResponse: Message = {
         id: (Date.now() + 1).toString(),
         content: response,

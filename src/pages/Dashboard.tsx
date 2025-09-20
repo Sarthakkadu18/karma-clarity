@@ -5,6 +5,7 @@ import { Navigation } from '@/components/ui/Navigation';
 import { useAuthStore } from '@/stores/authStore';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
+import { ReportDownloadCard } from '@/components/ui/ReportDownloadCard';
 import { BarChart3, TrendingUp, Users, MessageCircle, Coins, Calendar, Target, Award } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
@@ -88,7 +89,7 @@ const Dashboard: React.FC = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="lg:col-span-2"
+            className="lg:col-span-1"
           >
             <Card className="glass border-border/20">
               <CardHeader>
@@ -133,11 +134,22 @@ const Dashboard: React.FC = () => {
             </Card>
           </motion.div>
 
+          {/* Report Download Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.25 }}
+            className="lg:col-span-1"
+          >
+            <ReportDownloadCard />
+          </motion.div>
+
           {/* Recent Activity */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
+            className="lg:col-span-1"
           >
             <Card className="glass border-border/20">
               <CardHeader>
