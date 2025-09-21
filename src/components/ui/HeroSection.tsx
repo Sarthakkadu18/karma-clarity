@@ -3,13 +3,26 @@ import { motion } from 'framer-motion';
 
 export const HeroSection: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
+    // Set initial window size
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
+    
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+    
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
@@ -47,13 +60,13 @@ export const HeroSection: React.FC = () => {
               boxShadow: `0 0 ${Math.random() * 20 + 10}px hsl(${280 + Math.random() * 60}, 100%, ${60 + Math.random() * 30}%)`,
             }}
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * (windowSize.width || 1000),
+              y: Math.random() * (windowSize.height || 800),
               opacity: Math.random() * 0.8 + 0.2,
             }}
             animate={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * (windowSize.width || 1000),
+              y: Math.random() * (windowSize.height || 800),
               opacity: [0.2, 1, 0.2],
               scale: [1, 1.5, 1],
             }}
