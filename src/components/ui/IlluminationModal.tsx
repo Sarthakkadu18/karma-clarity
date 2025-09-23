@@ -127,8 +127,25 @@ Consider practicing mindfulness, connecting with your inner wisdom, and taking o
     // Simulate AI processing
     setTimeout(() => {
       const emotions = analyzeEmotion(problem);
+      
+      // Improved verse selection logic
+      let selectedVerse;
       const relevantVerses = searchVerses(problem);
-      const selectedVerse = relevantVerses[0] || searchVerses('peace')[0];
+      
+      if (relevantVerses.length > 0) {
+        // Randomly select from top 3 most relevant verses to add variety
+        const topVerses = relevantVerses.slice(0, Math.min(3, relevantVerses.length));
+        selectedVerse = topVerses[Math.floor(Math.random() * topVerses.length)];
+      } else {
+        // If no direct matches, try broader emotion-based search
+        const emotionKeywords = ['guidance', 'strength', 'peace', 'wisdom', 'hope', 'love', 'trust', 'faith'];
+        const randomKeyword = emotionKeywords[Math.floor(Math.random() * emotionKeywords.length)];
+        const emotionVerses = searchVerses(randomKeyword);
+        selectedVerse = emotionVerses.length > 0 
+          ? emotionVerses[Math.floor(Math.random() * Math.min(3, emotionVerses.length))]
+          : searchVerses('peace')[0]; // Final fallback
+      }
+      
       const guidance = generateGuidance(selectedVerse, problem);
 
       // Track the interaction

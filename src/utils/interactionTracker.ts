@@ -212,10 +212,67 @@ function formatFeatureName(featureName: string): string {
   return nameMap[featureName] || featureName;
 }
 
-// Download report as JSON
+// Download report as structured JSON
 export function downloadReportAsJSON(report: UserReport): void {
-  const dataStr = JSON.stringify(report, null, 2);
-  const dataBlob = new Blob([dataStr], { type: 'application/json' });
+  // Create a more structured and readable JSON format
+  const structuredReport = {
+    metadata: {
+      generatedAt: report.generatedAt.toISOString(),
+      reportPeriod: {
+        start: report.timeRange.start.toISOString(),
+        end: report.timeRange.end.toISOString()
+      },
+      totalInteractions: report.totalInteractions,
+      summary: {
+        totalFeatures: report.features.length,
+        mostActiveFeature: report.features.reduce((prev, current) => 
+          prev.totalSessions > current.totalSessions ? prev : current
+        ).featureName,
+        dominantEmotion: Object.entries(report.overallEmotionalProfile)
+          .sort((a, b) => b[1] - a[1])[0]?.[0] || 'neutral'
+      }
+    },
+    emotionalOverview: {
+      profile: report.overallEmotionalProfile,
+      analysis: Object.entries(report.overallEmotionalProfile)
+        .sort((a, b) => b[1] - a[1])
+        .map(([emotion, count]) => ({
+          emotion,
+          occurrences: count,
+          percentage: Math.round((count / report.totalInteractions) * 100)
+        }))
+    },
+    featureBreakdown: report.features.map(feature => ({
+      featureName: feature.featureName,
+      statistics: {
+        totalSessions: feature.totalSessions,
+        totalCommunications: feature.totalCommunications,
+        averageInteractionsPerSession: Math.round(feature.interactions.length / feature.totalSessions * 100) / 100
+      },
+      psychology: {
+        commonStatesOfMind: feature.commonStateOfMind,
+        emotionalProfile: feature.emotionalProfile
+      },
+      communications: {
+        recent: feature.interactions.slice(-10).map(interaction => ({
+          timestamp: interaction.timestamp.toISOString(),
+          type: interaction.type,
+          userMessage: interaction.communication,
+          systemResponse: interaction.response ? interaction.response.substring(0, 200) + '...' : null,
+          emotions: interaction.emotions,
+          stateOfMind: interaction.stateOfMind,
+          verseUsed: interaction.verseSource ? {
+            source: interaction.verseSource,
+            text: interaction.verseText
+          } : null
+        }))
+      }
+    })),
+    rawData: report // Include original data for completeness
+  };
+  
+  const dataStr = JSON.stringify(structuredReport, null, 2);
+  const dataBlob = new Blob([dataStr], { type: 'application/json; charset=utf-8' });
   
   const link = document.createElement('a');
   link.href = URL.createObjectURL(dataBlob);
@@ -228,52 +285,97 @@ export function downloadReportAsJSON(report: UserReport): void {
 // Download report as formatted text
 export function downloadReportAsText(report: UserReport): void {
   const formatDate = (date: Date) => date.toLocaleDateString();
+  const formatTime = (date: Date) => date.toLocaleString();
   
-  let textReport = `SPIRITUAL JOURNEY REPORT
-Generated: ${formatDate(report.generatedAt)}
-Period: ${formatDate(report.timeRange.start)} - ${formatDate(report.timeRange.end)}
-Total Interactions: ${report.totalInteractions}
+  let textReport = `╔═════════════════════════════════════════════════════════════════╗
+║                    SPIRITUAL JOURNEY REPORT                     ║
+╚═════════════════════════════════════════════════════════════════╝
 
-=== OVERALL EMOTIONAL PROFILE ===
-`;
-  
-  Object.entries(report.overallEmotionalProfile)
-    .sort((a, b) => b[1] - a[1])
-    .forEach(([emotion, count]) => {
-      textReport += `${emotion}: ${count} times\n`;
-    });
-  
-  textReport += `\n=== FEATURE BREAKDOWN ===\n`;
-  
-  report.features.forEach(feature => {
-    textReport += `\n--- ${feature.featureName} ---
-Sessions: ${feature.totalSessions}
-Communications: ${feature.totalCommunications}
+📅 Generated: ${formatDate(report.generatedAt)}
+📊 Report Period: ${formatDate(report.timeRange.start)} - ${formatDate(report.timeRange.end)}
+💬 Total Interactions: ${report.totalInteractions}
 
-State of Mind:
+┌─────────────────────────────────────────────────────────────────┐
+│                    OVERALL EMOTIONAL PROFILE                    │
+└─────────────────────────────────────────────────────────────────┘
 `;
-    feature.commonStateOfMind.forEach(state => {
-      textReport += `• ${state}\n`;
+  
+  const emotions = Object.entries(report.overallEmotionalProfile).sort((a, b) => b[1] - a[1]);
+  if (emotions.length > 0) {
+    textReport += `${'Emotion'.padEnd(15)} | ${'Count'.padEnd(8)} | Percentage\n`;
+    textReport += `${'-'.repeat(15)} | ${'-'.repeat(8)} | ${'-'.repeat(10)}\n`;
+    const total = emotions.reduce((sum, [, count]) => sum + count, 0);
+    emotions.forEach(([emotion, count]) => {
+      const percentage = Math.round((count / total) * 100);
+      textReport += `${emotion.padEnd(15)} | ${count.toString().padEnd(8)} | ${percentage}%\n`;
     });
-    
-    textReport += `\nEmotional Profile:
+  } else {
+    textReport += `No emotional data available.\n`;
+  }
+  
+  textReport += `\n┌─────────────────────────────────────────────────────────────────┐
+│                      FEATURE BREAKDOWN                          │
+└─────────────────────────────────────────────────────────────────┘\n`;
+  
+  report.features.forEach((feature, index) => {
+    textReport += `\n${index + 1}. ${feature.featureName.toUpperCase()}
+${'═'.repeat(feature.featureName.length + 3)}
+📊 Sessions: ${feature.totalSessions}
+💬 Total Communications: ${feature.totalCommunications}
+
+🧠 Common States of Mind:
 `;
-    Object.entries(feature.emotionalProfile)
-      .sort((a, b) => b[1] - a[1])
-      .forEach(([emotion, count]) => {
-        textReport += `• ${emotion}: ${count}\n`;
+    if (feature.commonStateOfMind.length > 0) {
+      feature.commonStateOfMind.forEach((state, i) => {
+        textReport += `   ${i + 1}. ${state}\n`;
       });
+    } else {
+      textReport += `   No states of mind recorded.\n`;
+    }
     
-    textReport += `\nRecent Communications:
+    textReport += `\n😊 Emotional Profile:
 `;
-    feature.interactions
-      .slice(-3)
-      .forEach(interaction => {
-        textReport += `• ${formatDate(interaction.timestamp)}: "${interaction.communication.substring(0, 100)}${interaction.communication.length > 100 ? '...' : ''}"\n`;
+    const featureEmotions = Object.entries(feature.emotionalProfile).sort((a, b) => b[1] - a[1]);
+    if (featureEmotions.length > 0) {
+      featureEmotions.forEach(([emotion, count]) => {
+        textReport += `   • ${emotion}: ${count} times\n`;
       });
+    } else {
+      textReport += `   No emotional data recorded.\n`;
+    }
+    
+    textReport += `\n💭 Recent Communications:
+`;
+    if (feature.interactions.length > 0) {
+      feature.interactions
+        .slice(-5) // Show last 5 interactions instead of 3
+        .forEach((interaction, i) => {
+          const truncatedComm = interaction.communication.length > 80 
+            ? interaction.communication.substring(0, 80) + '...' 
+            : interaction.communication;
+          textReport += `   ${i + 1}. [${formatTime(interaction.timestamp)}]\n      "${truncatedComm}"\n`;
+          if (interaction.response) {
+            const truncatedResp = interaction.response.length > 80 
+              ? interaction.response.substring(0, 80) + '...' 
+              : interaction.response;
+            textReport += `      Response: "${truncatedResp}"\n`;
+          }
+          textReport += `\n`;
+        });
+    } else {
+      textReport += `   No communications recorded.\n`;
+    }
+    
+    if (index < report.features.length - 1) {
+      textReport += `${'-'.repeat(65)}\n`;
+    }
   });
   
-  const dataBlob = new Blob([textReport], { type: 'text/plain' });
+  textReport += `\n╔═════════════════════════════════════════════════════════════════╗
+║  Thank you for using MindVersee for your spiritual journey! 🙏  ║
+╚═════════════════════════════════════════════════════════════════╝`;
+  
+  const dataBlob = new Blob([textReport], { type: 'text/plain; charset=utf-8' });
   const link = document.createElement('a');
   link.href = URL.createObjectURL(dataBlob);
   link.download = `spiritual_journey_report_${new Date().toISOString().split('T')[0]}.txt`;

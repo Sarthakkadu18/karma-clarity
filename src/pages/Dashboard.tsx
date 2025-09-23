@@ -83,13 +83,13 @@ const Dashboard: React.FC = () => {
           ))}
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Weekly Progress and Recent Activity Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Progress Chart */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="lg:col-span-1"
           >
             <Card className="glass border-border/20">
               <CardHeader>
@@ -134,22 +134,11 @@ const Dashboard: React.FC = () => {
             </Card>
           </motion.div>
 
-          {/* Report Download Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 0 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.25 }}
-            className="lg:col-span-1"
-          >
-            <ReportDownloadCard />
-          </motion.div>
-
           {/* Recent Activity */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className="lg:col-span-1"
           >
             <Card className="glass border-border/20">
               <CardHeader>
@@ -180,6 +169,16 @@ const Dashboard: React.FC = () => {
             </Card>
           </motion.div>
         </div>
+
+        {/* Journey Report - Full Width */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25 }}
+          className="mb-8"
+        >
+          <ReportDownloadCard />
+        </motion.div>
 
         {/* Goals Section */}
         <motion.div
