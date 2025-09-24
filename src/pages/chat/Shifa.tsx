@@ -5,7 +5,8 @@ import { Navigation } from '@/components/ui/Navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
-import { Send, Heart, User } from 'lucide-react';
+import { SolutionPanel } from '@/components/ui/SolutionPanel';
+import { Send, Heart, User, Lightbulb } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
 import { getIslamicResponse } from '@/utils/intelligentResponse';
 import { 
@@ -13,6 +14,7 @@ import {
   analyzeEmotionsForTracking, 
   detectStateOfMind 
 } from '@/utils/interactionTracker';
+import { getSolutionByProblemType, searchSolutions, Solution } from '@/data/mockData';
 
 interface Message {
   id: string;

@@ -7,6 +7,15 @@ export interface Verse {
   tags: string[];
 }
 
+export interface Solution {
+  id: string;
+  problemType: string;
+  title: string;
+  practicalPoints: string[];
+  source: string;
+  tags: string[];
+}
+
 export const mockVerses: Verse[] = [
   {
     id: '1',
@@ -697,9 +706,203 @@ export const getVersesBySource = (source: string): Verse[] => {
 
 export const searchVerses = (query: string): Verse[] => {
   const lowercaseQuery = query.toLowerCase();
-  return mockVerses.filter(verse => 
+  return mockVerses.filter(verse =>
     verse.text.toLowerCase().includes(lowercaseQuery) ||
     verse.translation.toLowerCase().includes(lowercaseQuery) ||
     verse.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
   );
+};
+
+export const mockSolutions: Solution[] = [
+  {
+    id: '1',
+    problemType: 'anxiety',
+    title: 'Overcoming Anxiety and Worry',
+    practicalPoints: [
+      'Practice deep breathing exercises daily - inhale for 4 counts, hold for 4, exhale for 6',
+      'Create a worry journal and write down anxious thoughts, then challenge them with evidence',
+      'Establish a morning routine with meditation or prayer to center yourself',
+      'Limit news consumption and social media to reduce external anxiety triggers',
+      'Exercise regularly - even 20 minutes of walking can reduce anxiety significantly',
+      'Practice gratitude by listing 3 things you\'re thankful for each day',
+      'Seek support from trusted friends, family, or professionals when needed',
+      'Use progressive muscle relaxation techniques before sleep'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['anxiety', 'worry', 'stress', 'mental-health']
+  },
+  {
+    id: '2',
+    problemType: 'relationship-conflict',
+    title: 'Resolving Relationship Conflicts',
+    practicalPoints: [
+      'Practice active listening - truly hear the other person without preparing your response',
+      'Use "I" statements instead of "you" statements to express feelings without blame',
+      'Take breaks during heated discussions to cool down and reflect',
+      'Focus on the specific issue at hand rather than bringing up past grievances',
+      'Look for common ground and shared values as a foundation for resolution',
+      'Apologize sincerely when you\'ve made mistakes, without expecting immediate forgiveness',
+      'Set healthy boundaries while remaining compassionate and understanding',
+      'Consider couples counseling or mediation for persistent conflicts'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['relationships', 'conflict', 'communication', 'forgiveness']
+  },
+  {
+    id: '3',
+    problemType: 'career-confusion',
+    title: 'Finding Career Direction and Purpose',
+    practicalPoints: [
+      'Conduct regular self-assessment of your values, strengths, and interests',
+      'Seek informational interviews with professionals in fields that interest you',
+      'Volunteer or take on projects that align with your potential career interests',
+      'Develop a growth mindset and embrace continuous learning and skill development',
+      'Network authentically by building genuine relationships rather than transactional connections',
+      'Create a personal mission statement that guides your career decisions',
+      'Set both short-term and long-term career goals with specific action steps',
+      'Consider working with a career counselor or mentor for guidance and accountability'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['career', 'purpose', 'direction', 'growth']
+  },
+  {
+    id: '4',
+    problemType: 'financial-stress',
+    title: 'Managing Financial Difficulties',
+    practicalPoints: [
+      'Create a detailed budget tracking all income and expenses for at least one month',
+      'Prioritize needs over wants and eliminate unnecessary spending temporarily',
+      'Build an emergency fund starting with just $500 as your first goal',
+      'Consider additional income sources like freelancing or part-time work',
+      'Negotiate payment plans with creditors before defaulting on payments',
+      'Educate yourself about personal finance through books, courses, or workshops',
+      'Seek help from financial counselors or advisors when needed',
+      'Practice contentment and gratitude for what you have while working toward financial stability'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['money', 'financial', 'stress', 'budgeting']
+  },
+  {
+    id: '5',
+    problemType: 'loss-grief',
+    title: 'Coping with Loss and Grief',
+    practicalPoints: [
+      'Allow yourself to feel all emotions without judgment - grief has no timeline',
+      'Create meaningful rituals or memorials to honor your loved one or lost dream',
+      'Maintain connections with supportive people who understand your grief',
+      'Take care of your physical health through proper nutrition, sleep, and gentle exercise',
+      'Express your feelings through journaling, art, music, or other creative outlets',
+      'Seek professional grief counseling if grief becomes overwhelming',
+      'Find ways to carry forward the legacy or lessons from what you\'ve lost',
+      'Be patient with yourself and practice self-compassion during the healing process'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['grief', 'loss', 'death', 'healing']
+  },
+  {
+    id: '6',
+    problemType: 'spiritual-doubt',
+    title: 'Navigating Spiritual Doubts and Questions',
+    practicalPoints: [
+      'Embrace questions as a natural part of spiritual growth rather than signs of weakness',
+      'Study sacred texts with an open mind and seek multiple interpretations',
+      'Engage in honest conversations with spiritual mentors or community members',
+      'Practice meditation or contemplation to connect with your inner wisdom',
+      'Explore different spiritual traditions to broaden your understanding',
+      'Keep a spiritual journal to track your thoughts, experiences, and insights',
+      'Participate in service to others as a way of expressing and discovering faith',
+      'Remember that doubt and faith can coexist - they often strengthen each other'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['faith', 'doubt', 'spirituality', 'questions']
+  },
+  {
+    id: '7',
+    problemType: 'addiction',
+    title: 'Overcoming Addictive Behaviors',
+    practicalPoints: [
+      'Acknowledge the problem honestly and reach out for professional help immediately',
+      'Join support groups like AA, NA, or other recovery communities for peer support',
+      'Identify and avoid triggers that lead to addictive behaviors',
+      'Develop healthy coping strategies like exercise, meditation, or creative pursuits',
+      'Build a strong support network of family, friends, and sponsors',
+      'Create structure in your daily routine to replace chaotic patterns',
+      'Practice mindfulness to become aware of urges without automatically acting on them',
+      'Celebrate small victories and be patient with the recovery process'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['addiction', 'recovery', 'healing', 'support']
+  },
+  {
+    id: '8',
+    problemType: 'loneliness',
+    title: 'Overcoming Loneliness and Isolation',
+    practicalPoints: [
+      'Reach out to one person each day, even if it\'s just a simple text or call',
+      'Join clubs, classes, or volunteer organizations based on your interests',
+      'Practice self-compassion and work on developing a positive relationship with yourself',
+      'Use technology mindfully to connect genuinely rather than just scrolling passively',
+      'Be vulnerable and authentic in conversations to build deeper connections',
+      'Consider adopting a pet if circumstances allow for companionship and responsibility',
+      'Attend community events, religious services, or local gatherings regularly',
+      'Seek therapy if loneliness is connected to depression or social anxiety'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['loneliness', 'connection', 'community', 'relationships']
+  },
+  {
+    id: '9',
+    problemType: 'anger-management',
+    title: 'Managing Anger and Frustration',
+    practicalPoints: [
+      'Practice the pause technique - count to 10 before responding when angry',
+      'Identify your anger triggers and develop specific strategies for each one',
+      'Use physical exercise to release anger energy in a healthy way',
+      'Practice deep breathing or meditation to calm your nervous system',
+      'Express anger through writing or art before discussing with others',
+      'Learn to communicate assertively rather than aggressively or passively',
+      'Address underlying issues like stress, hurt, or unmet needs that fuel anger',
+      'Seek anger management counseling if anger is affecting your relationships or work'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['anger', 'emotions', 'self-control', 'communication']
+  },
+  {
+    id: '10',
+    problemType: 'family-problems',
+    title: 'Resolving Family Dynamics and Issues',
+    practicalPoints: [
+      'Set clear, healthy boundaries while maintaining love and respect',
+      'Practice forgiveness as a gift to yourself, not necessarily reconciliation',
+      'Focus on changing your own behavior and responses rather than trying to change others',
+      'Seek to understand family patterns and generational issues that may be at play',
+      'Communicate directly with family members rather than through intermediaries',
+      'Consider family therapy to work through deep-rooted issues with professional guidance',
+      'Create new, positive traditions and memories while honoring the past appropriately',
+      'Accept that some family relationships may need to be limited for your wellbeing'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['family', 'boundaries', 'forgiveness', 'relationships']
+  }
+];
+
+export const getSolutionByProblemType = (problemType: string): Solution | null => {
+  return mockSolutions.find(solution => 
+    solution.problemType.toLowerCase().includes(problemType.toLowerCase()) ||
+    solution.tags.some(tag => tag.toLowerCase().includes(problemType.toLowerCase()))
+  ) || null;
+};
+
+export const searchSolutions = (query: string): Solution[] => {
+  const lowercaseQuery = query.toLowerCase();
+  return mockSolutions.filter(solution =>
+    solution.title.toLowerCase().includes(lowercaseQuery) ||
+    solution.problemType.toLowerCase().includes(lowercaseQuery) ||
+    solution.practicalPoints.some(point => point.toLowerCase().includes(lowercaseQuery)) ||
+    solution.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
+  );
+};
+
+export const getRandomSolution = (): Solution => {
+  return mockSolutions[Math.floor(Math.random() * mockSolutions.length)];
 };

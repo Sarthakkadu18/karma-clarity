@@ -4,13 +4,19 @@ export interface UserInteraction {
   id: string;
   timestamp: Date;
   feature: 'illumination' | 'kurukshetra' | 'iqra' | 'shifa' | 'pragmatism' | 'gurugranth';
-  type: 'emotion_analysis' | 'chat_message' | 'guidance_request';
+  type: 'emotion_analysis' | 'chat_message' | 'guidance_request' | 'solution_request';
   stateOfMind?: string;
   emotions?: string[];
   communication: string;
   response?: string;
   verseSource?: string;
   verseText?: string;
+  solution?: {
+    problemType: string;
+    title: string;
+    pointsCount: number;
+    practicalPoints: string[];
+  };
 }
 
 export interface FeatureReport {
@@ -20,6 +26,8 @@ export interface FeatureReport {
   emotionalProfile: Record<string, number>;
   commonStateOfMind: string[];
   totalCommunications: number;
+  totalSolutions: number;
+  solutionTypes: Record<string, number>;
 }
 
 export interface UserReport {
@@ -163,6 +171,15 @@ export function generateUserReport(dateRange?: { start: Date; end: Date }): User
       .sort((a, b) => b[1] - a[1])
       .slice(0, 3)
       .map(([state]) => state);
+
+    // Track solution data
+    const solutionInteractions = interactions.filter(i => i.type === 'solution_request' && i.solution);
+    const solutionTypes = solutionInteractions.reduce((types, interaction) => {
+      if (interaction.solution) {
+        types[interaction.solution.problemType] = (types[interaction.solution.problemType] || 0) + 1;
+      }
+      return types;
+    }, {} as Record<string, number>);
     
     return {
       featureName: formatFeatureName(featureName),
@@ -170,7 +187,9 @@ export function generateUserReport(dateRange?: { start: Date; end: Date }): User
       totalSessions: interactions.length,
       emotionalProfile,
       commonStateOfMind,
-      totalCommunications: interactions.filter(i => i.type === 'chat_message').length
+      totalCommunications: interactions.filter(i => i.type === 'chat_message').length,
+      totalSolutions: solutionInteractions.length,
+      solutionTypes
     };
   });
   
@@ -242,16 +261,21 @@ export function downloadReportAsJSON(report: UserReport): void {
           percentage: Math.round((count / report.totalInteractions) * 100)
         }))
     },
-    featureBreakdown: report.features.map(feature => ({
+      featureBreakdown: report.features.map(feature => ({
       featureName: feature.featureName,
       statistics: {
         totalSessions: feature.totalSessions,
         totalCommunications: feature.totalCommunications,
+        totalSolutions: feature.totalSolutions,
         averageInteractionsPerSession: Math.round(feature.interactions.length / feature.totalSessions * 100) / 100
       },
       psychology: {
         commonStatesOfMind: feature.commonStateOfMind,
         emotionalProfile: feature.emotionalProfile
+      },
+      solutions: {
+        solutionTypes: feature.solutionTypes,
+        totalSolutionsRequested: feature.totalSolutions
       },
       communications: {
         recent: feature.interactions.slice(-10).map(interaction => ({
@@ -264,6 +288,11 @@ export function downloadReportAsJSON(report: UserReport): void {
           verseUsed: interaction.verseSource ? {
             source: interaction.verseSource,
             text: interaction.verseText
+          } : null,
+          solutionProvided: interaction.solution ? {
+            problemType: interaction.solution.problemType,
+            title: interaction.solution.title,
+            pointsCount: interaction.solution.pointsCount
           } : null
         }))
       }
@@ -322,6 +351,7 @@ export function downloadReportAsText(report: UserReport): void {
 ${'═'.repeat(feature.featureName.length + 3)}
 📊 Sessions: ${feature.totalSessions}
 💬 Total Communications: ${feature.totalCommunications}
+💡 Solutions Requested: ${feature.totalSolutions}
 
 🧠 Common States of Mind:
 `;
@@ -343,22 +373,34 @@ ${'═'.repeat(feature.featureName.length + 3)}
     } else {
       textReport += `   No emotional data recorded.\n`;
     }
+
+    if (feature.totalSolutions > 0) {
+      textReport += `\n💡 Solution Types:
+`;
+      const solutionTypes = Object.entries(feature.solutionTypes).sort((a, b) => b[1] - a[1]);
+      solutionTypes.forEach(([type, count]) => {
+        textReport += `   • ${type}: ${count} solutions\n`;
+      });
+    }
     
     textReport += `\n💭 Recent Communications:
 `;
     if (feature.interactions.length > 0) {
       feature.interactions
-        .slice(-5) // Show last 5 interactions instead of 3
+        .slice(-5)
         .forEach((interaction, i) => {
           const truncatedComm = interaction.communication.length > 80 
             ? interaction.communication.substring(0, 80) + '...' 
             : interaction.communication;
-          textReport += `   ${i + 1}. [${formatTime(interaction.timestamp)}]\n      "${truncatedComm}"\n`;
+          textReport += `   ${i + 1}. [${formatTime(interaction.timestamp)}] ${interaction.type === 'solution_request' ? '💡' : '💬'}\n      "${truncatedComm}"\n`;
           if (interaction.response) {
             const truncatedResp = interaction.response.length > 80 
               ? interaction.response.substring(0, 80) + '...' 
               : interaction.response;
             textReport += `      Response: "${truncatedResp}"\n`;
+          }
+          if (interaction.solution) {
+            textReport += `      Solution: ${interaction.solution.title} (${interaction.solution.pointsCount} points)\n`;
           }
           textReport += `\n`;
         });
