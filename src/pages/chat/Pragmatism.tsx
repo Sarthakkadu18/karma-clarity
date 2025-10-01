@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send, MessageSquare } from 'lucide-react';
+import { Send, MessageSquare, Lightbulb, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
+import { SolutionPanel } from '@/components/ui/SolutionPanel';
 import { Navigation } from '@/components/ui/Navigation';
 import { motion } from 'framer-motion';
 import { useAuthStore } from '@/stores/authStore';
@@ -13,6 +14,7 @@ import {
   analyzeEmotionsForTracking, 
   detectStateOfMind 
 } from '@/utils/interactionTracker';
+import { getSolutionByProblemType, searchSolutions, Solution } from '@/data/mockData';
 
 interface Message {
   id: string;
@@ -25,6 +27,9 @@ const Pragmatism = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isSolutionOpen, setIsSolutionOpen] = useState(false);
+  const [currentSolution, setCurrentSolution] = useState<Solution | null>(null);
+  const [lastUserMessage, setLastUserMessage] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { isAuthenticated, user } = useAuthStore();
 
@@ -60,6 +65,7 @@ const Pragmatism = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    setLastUserMessage(inputValue);
     setInputValue('');
     setIsLoading(true);
 
@@ -86,6 +92,41 @@ const Pragmatism = () => {
       setMessages(prev => [...prev, chanakyaResponse]);
       setIsLoading(false);
     }, 1000 + Math.random() * 2000);
+  };
+
+  const handleSolutionRequest = () => {
+    if (!lastUserMessage.trim()) return;
+
+    const stateOfMind = detectStateOfMind(lastUserMessage);
+    const emotions = analyzeEmotionsForTracking(lastUserMessage);
+    
+    let solution = getSolutionByProblemType(stateOfMind.toLowerCase()) || 
+                  getSolutionByProblemType(emotions[0]?.toLowerCase() || '');
+    
+    if (!solution) {
+      const searchResults = searchSolutions(lastUserMessage);
+      solution = searchResults.length > 0 ? searchResults[0] : null;
+    }
+
+    if (solution) {
+      setCurrentSolution(solution);
+      setIsSolutionOpen(true);
+      
+      trackInteraction({
+        feature: 'pragmatism',
+        type: 'solution_request',
+        stateOfMind: stateOfMind,
+        emotions: emotions,
+        communication: lastUserMessage,
+        response: `Solution provided: ${solution.title}`,
+        solution: {
+          problemType: solution.problemType,
+          title: solution.title,
+          pointsCount: solution.practicalPoints.length,
+          practicalPoints: solution.practicalPoints
+        }
+      });
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -117,7 +158,18 @@ const Pragmatism = () => {
           </p>
         </motion.div>
 
-        <Card className="bg-card/50 backdrop-blur-sm border-primary/10 mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ 
+            opacity: 1, 
+            y: 0,
+            x: isSolutionOpen ? '-20%' : 0,
+            width: isSolutionOpen ? '55%' : '100%'
+          }}
+          transition={{ duration: 0.3 }}
+          className="relative"
+        >
+          <Card className="bg-card/50 backdrop-blur-sm border-primary/10 mb-6">
           <CardContent className="p-6">
             <div className="space-y-4 h-96 overflow-y-auto">
               {messages.map((message, index) => (
@@ -128,25 +180,29 @@ const Pragmatism = () => {
                   transition={{ delay: index * 0.1 }}
                   className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className={`max-w-[80%] p-4 rounded-lg ${
-                    message.sender === 'user' 
-                      ? 'bg-primary text-primary-foreground ml-4' 
-                      : 'bg-secondary/50 text-foreground mr-4'
-                  }`}>
-                    <div className="flex items-start gap-3">
-                      {message.sender === 'chanakya' && (
-                        <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
-                          <MessageSquare className="w-4 h-4 text-primary" />
-                        </div>
+                  <div className={`flex items-start space-x-3 max-w-[80%] ${message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                      message.sender === 'user' 
+                        ? 'bg-primary' 
+                        : 'bg-primary/20'
+                    }`}>
+                      {message.sender === 'user' ? (
+                        <User className="w-4 h-4 text-white" />
+                      ) : (
+                        <MessageSquare className="w-4 h-4 text-primary" />
                       )}
-                      <div className="flex-1">
-                        <p className="text-sm leading-relaxed whitespace-pre-wrap">
-                          {message.content}
-                        </p>
-                        <span className="text-xs opacity-70 mt-2 block">
-                          {message.timestamp.toLocaleTimeString()}
-                        </span>
-                      </div>
+                    </div>
+                    <div className={`p-4 rounded-lg ${
+                      message.sender === 'user'
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-secondary/50 text-foreground'
+                    }`}>
+                      <p className="text-sm leading-relaxed whitespace-pre-wrap">
+                        {message.content}
+                      </p>
+                      <span className="text-xs opacity-70 mt-2 block">
+                        {message.timestamp.toLocaleTimeString()}
+                      </span>
                     </div>
                   </div>
                 </motion.div>
@@ -178,27 +234,42 @@ const Pragmatism = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-card/30 backdrop-blur-sm border-primary/10">
-          <CardContent className="p-4">
-            <div className="flex gap-2">
-              <Input
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Share your challenge for strategic guidance..."
-                className="flex-1 bg-background/50 border-primary/20 focus:border-primary/40"
-                disabled={isLoading}
-              />
-              <Button 
-                onClick={handleSendMessage}
-                disabled={!inputValue.trim() || isLoading}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground"
-              >
-                <Send className="w-4 h-4" />
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+          <Card className="bg-card/30 backdrop-blur-sm border-primary/10">
+            <CardContent className="p-4">
+              <div className="flex gap-2">
+                <Input
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Share your challenge for strategic guidance..."
+                  className="flex-1 bg-background/50 border-primary/20 focus:border-primary/40"
+                  disabled={isLoading}
+                />
+                <Button
+                  onClick={handleSolutionRequest}
+                  disabled={!lastUserMessage.trim() || isLoading}
+                  className="bg-secondary hover:bg-secondary/90"
+                  title="Get practical solutions"
+                >
+                  <Lightbulb className="w-4 h-4" />
+                </Button>
+                <Button 
+                  onClick={handleSendMessage}
+                  disabled={!inputValue.trim() || isLoading}
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                >
+                  <Send className="w-4 h-4" />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          <SolutionPanel
+            isOpen={isSolutionOpen}
+            onClose={() => setIsSolutionOpen(false)}
+            solution={currentSolution}
+          />
+        </motion.div>
       </div>
     </div>
   );

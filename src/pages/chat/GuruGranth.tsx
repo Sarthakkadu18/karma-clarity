@@ -5,7 +5,8 @@ import { Navigation } from '@/components/ui/Navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
-import { Send, Crown, User } from 'lucide-react';
+import { SolutionPanel } from '@/components/ui/SolutionPanel';
+import { Send, Crown, User, Lightbulb } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
 import { getGuruResponse } from '@/utils/intelligentResponse';
 import { 
@@ -13,6 +14,7 @@ import {
   analyzeEmotionsForTracking, 
   detectStateOfMind 
 } from '@/utils/interactionTracker';
+import { getSolutionByProblemType, searchSolutions, Solution } from '@/data/mockData';
 
 interface Message {
   id: string;
@@ -33,6 +35,9 @@ const GuruGranth: React.FC = () => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isSolutionOpen, setIsSolutionOpen] = useState(false);
+  const [currentSolution, setCurrentSolution] = useState<Solution | null>(null);
+  const [lastUserMessage, setLastUserMessage] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -58,6 +63,7 @@ const GuruGranth: React.FC = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    setLastUserMessage(inputValue);
     setInputValue('');
     setIsLoading(true);
 
@@ -84,6 +90,41 @@ const GuruGranth: React.FC = () => {
       setMessages(prev => [...prev, guruResponse]);
       setIsLoading(false);
     }, 1000 + Math.random() * 2000);
+  };
+
+  const handleSolutionRequest = () => {
+    if (!lastUserMessage.trim()) return;
+
+    const stateOfMind = detectStateOfMind(lastUserMessage);
+    const emotions = analyzeEmotionsForTracking(lastUserMessage);
+    
+    let solution = getSolutionByProblemType(stateOfMind.toLowerCase()) || 
+                  getSolutionByProblemType(emotions[0]?.toLowerCase() || '');
+    
+    if (!solution) {
+      const searchResults = searchSolutions(lastUserMessage);
+      solution = searchResults.length > 0 ? searchResults[0] : null;
+    }
+
+    if (solution) {
+      setCurrentSolution(solution);
+      setIsSolutionOpen(true);
+      
+      trackInteraction({
+        feature: 'gurugranth',
+        type: 'solution_request',
+        stateOfMind: stateOfMind,
+        emotions: emotions,
+        communication: lastUserMessage,
+        response: `Solution provided: ${solution.title}`,
+        solution: {
+          problemType: solution.problemType,
+          title: solution.title,
+          pointsCount: solution.practicalPoints.length,
+          practicalPoints: solution.practicalPoints
+        }
+      });
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -119,9 +160,14 @@ const GuruGranth: React.FC = () => {
         {/* Chat Container */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ 
+            opacity: 1, 
+            y: 0,
+            x: isSolutionOpen ? '-20%' : 0,
+            width: isSolutionOpen ? '55%' : '100%'
+          }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="h-[60vh] flex flex-col"
+          className="h-[60vh] flex flex-col relative"
         >
           <Card className="glass border-border/20 flex-1 flex flex-col">
             <CardContent className="p-0 flex-1 flex flex-col">
@@ -207,6 +253,14 @@ const GuruGranth: React.FC = () => {
                     disabled={isLoading}
                   />
                   <Button
+                    onClick={handleSolutionRequest}
+                    disabled={!lastUserMessage.trim() || isLoading}
+                    className="bg-gradient-to-r from-spiritual-gold/20 to-spiritual-orange/20 hover:opacity-90 px-4 border border-spiritual-gold/30"
+                    title="Get practical solutions"
+                  >
+                    <Lightbulb className="w-4 h-4" />
+                  </Button>
+                  <Button
                     onClick={handleSendMessage}
                     disabled={!inputValue.trim() || isLoading}
                     className="bg-gradient-to-r from-spiritual-gold to-spiritual-orange hover:opacity-90 px-4"
@@ -217,6 +271,13 @@ const GuruGranth: React.FC = () => {
               </div>
             </CardContent>
           </Card>
+
+          {/* Solution Panel */}
+          <SolutionPanel
+            isOpen={isSolutionOpen}
+            onClose={() => setIsSolutionOpen(false)}
+            solution={currentSolution}
+          />
         </motion.div>
       </main>
     </div>
