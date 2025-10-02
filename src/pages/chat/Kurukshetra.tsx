@@ -15,6 +15,7 @@ import {
   detectStateOfMind 
 } from '@/utils/interactionTracker';
 import { getSolutionByProblemType, searchSolutions, Solution } from '@/data/mockData';
+import { useToast } from '@/hooks/use-toast';
 
 interface Message {
   id: string;
@@ -25,6 +26,7 @@ interface Message {
 
 const Kurukshetra: React.FC = () => {
   const { isAuthenticated, user } = useAuthStore();
+  const { toast } = useToast();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -93,11 +95,24 @@ const Kurukshetra: React.FC = () => {
   };
 
   const handleSolutionRequest = () => {
-    if (!lastUserMessage.trim()) return;
+    console.log('Solution button clicked');
+    console.log('Last user message:', lastUserMessage);
+    
+    if (!lastUserMessage.trim()) {
+      toast({
+        title: "No message to analyze",
+        description: "Please send a message first before requesting solutions.",
+        variant: "destructive"
+      });
+      return;
+    }
 
     // Detect problem type from the user's message
     const stateOfMind = detectStateOfMind(lastUserMessage);
     const emotions = analyzeEmotionsForTracking(lastUserMessage);
+    
+    console.log('State of mind detected:', stateOfMind);
+    console.log('Emotions detected:', emotions);
     
     // Find appropriate solution
     let solution = getSolutionByProblemType(stateOfMind.toLowerCase()) || 
@@ -107,11 +122,19 @@ const Kurukshetra: React.FC = () => {
     if (!solution) {
       const searchResults = searchSolutions(lastUserMessage);
       solution = searchResults.length > 0 ? searchResults[0] : null;
+      console.log('Search results:', searchResults);
     }
+
+    console.log('Solution found:', solution);
 
     if (solution) {
       setCurrentSolution(solution);
       setIsSolutionOpen(true);
+      
+      toast({
+        title: "Solution Found!",
+        description: solution.title,
+      });
       
       // Track the solution request
       trackInteraction({
@@ -127,6 +150,12 @@ const Kurukshetra: React.FC = () => {
           pointsCount: solution.practicalPoints.length,
           practicalPoints: solution.practicalPoints
         }
+      });
+    } else {
+      toast({
+        title: "No specific solution found",
+        description: "Try rephrasing your concern or ask about common issues like anxiety, relationships, or career.",
+        variant: "destructive"
       });
     }
   };
