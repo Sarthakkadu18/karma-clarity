@@ -714,175 +714,816 @@ export const searchVerses = (query: string): Verse[] => {
 };
 
 export const mockSolutions: Solution[] = [
+  // Emotional & Mental Health
   {
     id: '1',
-    problemType: 'anxiety',
-    title: 'Overcoming Anxiety and Worry',
+    problemType: 'depression',
+    title: 'Overcoming Depression and Persistent Sadness',
     practicalPoints: [
-      'Practice deep breathing exercises daily - inhale for 4 counts, hold for 4, exhale for 6',
-      'Create a worry journal and write down anxious thoughts, then challenge them with evidence',
-      'Establish a morning routine with meditation or prayer to center yourself',
-      'Limit news consumption and social media to reduce external anxiety triggers',
-      'Exercise regularly - even 20 minutes of walking can reduce anxiety significantly',
-      'Practice gratitude by listing 3 things you\'re thankful for each day',
-      'Seek support from trusted friends, family, or professionals when needed',
-      'Use progressive muscle relaxation techniques before sleep'
+      'Establish a consistent daily routine with regular sleep and wake times',
+      'Get at least 20-30 minutes of sunlight and physical activity each day',
+      'Practice mindfulness meditation for 10 minutes daily to stay present',
+      'Connect with at least one supportive person each day, even briefly',
+      'Set small, achievable goals and celebrate each accomplishment',
+      'Seek professional help from a therapist or counselor without delay',
+      'Keep a gratitude journal to shift focus toward positive aspects of life'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['depression', 'sadness', 'mental-health', 'healing']
+  },
+  {
+    id: '2',
+    problemType: 'anxiety',
+    title: 'Managing Anxiety and Constant Worry',
+    practicalPoints: [
+      'Practice deep breathing exercises - inhale for 4 counts, hold for 4, exhale for 6',
+      'Create a worry journal and challenge anxious thoughts with evidence',
+      'Limit news consumption and social media to reduce anxiety triggers',
+      'Exercise regularly - even 20 minutes of walking significantly reduces anxiety',
+      'Use progressive muscle relaxation techniques before sleep',
+      'Practice grounding techniques (5-4-3-2-1 method) during panic moments',
+      'Consider cognitive behavioral therapy (CBT) for long-term management'
     ],
     source: 'Universal Wisdom',
     tags: ['anxiety', 'worry', 'stress', 'mental-health']
   },
   {
-    id: '2',
-    problemType: 'relationship-conflict',
-    title: 'Resolving Relationship Conflicts',
-    practicalPoints: [
-      'Practice active listening - truly hear the other person without preparing your response',
-      'Use "I" statements instead of "you" statements to express feelings without blame',
-      'Take breaks during heated discussions to cool down and reflect',
-      'Focus on the specific issue at hand rather than bringing up past grievances',
-      'Look for common ground and shared values as a foundation for resolution',
-      'Apologize sincerely when you\'ve made mistakes, without expecting immediate forgiveness',
-      'Set healthy boundaries while remaining compassionate and understanding',
-      'Consider couples counseling or mediation for persistent conflicts'
-    ],
-    source: 'Universal Wisdom',
-    tags: ['relationships', 'conflict', 'communication', 'forgiveness']
-  },
-  {
     id: '3',
-    problemType: 'career-confusion',
-    title: 'Finding Career Direction and Purpose',
+    problemType: 'low-self-esteem',
+    title: 'Building Self-Esteem and Confidence',
     practicalPoints: [
-      'Conduct regular self-assessment of your values, strengths, and interests',
-      'Seek informational interviews with professionals in fields that interest you',
-      'Volunteer or take on projects that align with your potential career interests',
-      'Develop a growth mindset and embrace continuous learning and skill development',
-      'Network authentically by building genuine relationships rather than transactional connections',
-      'Create a personal mission statement that guides your career decisions',
-      'Set both short-term and long-term career goals with specific action steps',
-      'Consider working with a career counselor or mentor for guidance and accountability'
+      'Challenge negative self-talk by writing down evidence that contradicts it',
+      'List your strengths and achievements, no matter how small they seem',
+      'Set realistic, achievable goals and track your progress',
+      'Practice self-compassion - treat yourself as you would a good friend',
+      'Surround yourself with supportive, positive people',
+      'Celebrate small wins and acknowledge your efforts, not just outcomes',
+      'Engage in activities where you feel competent and successful'
     ],
     source: 'Universal Wisdom',
-    tags: ['career', 'purpose', 'direction', 'growth']
+    tags: ['self-esteem', 'confidence', 'self-worth', 'personal-growth']
   },
   {
     id: '4',
-    problemType: 'financial-stress',
-    title: 'Managing Financial Difficulties',
+    problemType: 'numbness',
+    title: 'Reconnecting When Feeling Numb and Disconnected',
     practicalPoints: [
-      'Create a detailed budget tracking all income and expenses for at least one month',
-      'Prioritize needs over wants and eliminate unnecessary spending temporarily',
-      'Build an emergency fund starting with just $500 as your first goal',
-      'Consider additional income sources like freelancing or part-time work',
-      'Negotiate payment plans with creditors before defaulting on payments',
-      'Educate yourself about personal finance through books, courses, or workshops',
-      'Seek help from financial counselors or advisors when needed',
-      'Practice contentment and gratitude for what you have while working toward financial stability'
+      'Engage your senses deliberately - notice textures, sounds, smells around you',
+      'Try new experiences to break monotony and stimulate emotional responses',
+      'Practice journaling to identify and express suppressed emotions',
+      'Engage in creative activities like art, music, or writing',
+      'Connect with nature - spend time outdoors, observe natural beauty',
+      'Seek therapy to explore underlying causes of emotional numbness',
+      'Be patient with yourself - healing takes time and isn\'t linear'
     ],
     source: 'Universal Wisdom',
-    tags: ['money', 'financial', 'stress', 'budgeting']
+    tags: ['numbness', 'disconnection', 'emotional-health', 'healing']
   },
   {
     id: '5',
-    problemType: 'loss-grief',
-    title: 'Coping with Loss and Grief',
+    problemType: 'burnout',
+    title: 'Recovering from Burnout and Exhaustion',
     practicalPoints: [
-      'Allow yourself to feel all emotions without judgment - grief has no timeline',
-      'Create meaningful rituals or memorials to honor your loved one or lost dream',
-      'Maintain connections with supportive people who understand your grief',
-      'Take care of your physical health through proper nutrition, sleep, and gentle exercise',
-      'Express your feelings through journaling, art, music, or other creative outlets',
-      'Seek professional grief counseling if grief becomes overwhelming',
-      'Find ways to carry forward the legacy or lessons from what you\'ve lost',
-      'Be patient with yourself and practice self-compassion during the healing process'
+      'Take immediate time off if possible - even a few days can help reset',
+      'Set firm boundaries between work and personal time',
+      'Practice saying "no" to additional responsibilities',
+      'Prioritize sleep - aim for 7-9 hours consistently',
+      'Delegate tasks and ask for help when needed',
+      'Engage in activities that genuinely recharge you, not just distract',
+      'Consider if your current situation is sustainable long-term'
     ],
     source: 'Universal Wisdom',
-    tags: ['grief', 'loss', 'death', 'healing']
+    tags: ['burnout', 'exhaustion', 'energy', 'work-life-balance']
   },
   {
     id: '6',
-    problemType: 'spiritual-doubt',
-    title: 'Navigating Spiritual Doubts and Questions',
+    problemType: 'identity-crisis',
+    title: 'Rediscovering Your Identity and Purpose',
     practicalPoints: [
-      'Embrace questions as a natural part of spiritual growth rather than signs of weakness',
-      'Study sacred texts with an open mind and seek multiple interpretations',
-      'Engage in honest conversations with spiritual mentors or community members',
-      'Practice meditation or contemplation to connect with your inner wisdom',
-      'Explore different spiritual traditions to broaden your understanding',
-      'Keep a spiritual journal to track your thoughts, experiences, and insights',
-      'Participate in service to others as a way of expressing and discovering faith',
-      'Remember that doubt and faith can coexist - they often strengthen each other'
+      'Reflect on times you felt most authentic and alive - what were you doing?',
+      'Explore your values - what truly matters to you beyond others\' expectations?',
+      'Try new hobbies and experiences without judgment or pressure',
+      'Journal about your dreams, interests, and what brings you joy',
+      'Connect with people who knew you before your current crisis',
+      'Give yourself permission to change and evolve',
+      'Consider working with a life coach or therapist for guided exploration'
     ],
     source: 'Universal Wisdom',
-    tags: ['faith', 'doubt', 'spirituality', 'questions']
+    tags: ['identity', 'purpose', 'self-discovery', 'personal-growth']
   },
   {
     id: '7',
-    problemType: 'addiction',
-    title: 'Overcoming Addictive Behaviors',
+    problemType: 'trauma',
+    title: 'Healing from Past Trauma and Regrets',
     practicalPoints: [
-      'Acknowledge the problem honestly and reach out for professional help immediately',
-      'Join support groups like AA, NA, or other recovery communities for peer support',
-      'Identify and avoid triggers that lead to addictive behaviors',
-      'Develop healthy coping strategies like exercise, meditation, or creative pursuits',
-      'Build a strong support network of family, friends, and sponsors',
-      'Create structure in your daily routine to replace chaotic patterns',
-      'Practice mindfulness to become aware of urges without automatically acting on them',
-      'Celebrate small victories and be patient with the recovery process'
+      'Seek professional trauma therapy (EMDR, CBT, or trauma-focused therapy)',
+      'Practice grounding techniques when triggered by traumatic memories',
+      'Build a support network of trusted, understanding people',
+      'Engage in self-care routines that help you feel safe and secure',
+      'Write a letter to your past self with compassion and forgiveness',
+      'Remember that healing isn\'t linear - setbacks are part of recovery',
+      'Consider support groups for trauma survivors'
     ],
     source: 'Universal Wisdom',
-    tags: ['addiction', 'recovery', 'healing', 'support']
+    tags: ['trauma', 'ptsd', 'healing', 'regret', 'past']
   },
   {
     id: '8',
-    problemType: 'loneliness',
-    title: 'Overcoming Loneliness and Isolation',
+    problemType: 'anger',
+    title: 'Managing Anger and Short Temper',
     practicalPoints: [
-      'Reach out to one person each day, even if it\'s just a simple text or call',
-      'Join clubs, classes, or volunteer organizations based on your interests',
-      'Practice self-compassion and work on developing a positive relationship with yourself',
-      'Use technology mindfully to connect genuinely rather than just scrolling passively',
-      'Be vulnerable and authentic in conversations to build deeper connections',
-      'Consider adopting a pet if circumstances allow for companionship and responsibility',
-      'Attend community events, religious services, or local gatherings regularly',
-      'Seek therapy if loneliness is connected to depression or social anxiety'
+      'Practice the pause technique - count to 10 before responding when angry',
+      'Identify your anger triggers and develop specific strategies for each',
+      'Use physical exercise to release anger energy healthily',
+      'Practice deep breathing or meditation to calm your nervous system',
+      'Express anger through writing or art before discussing with others',
+      'Learn assertive communication rather than aggressive responses',
+      'Seek anger management counseling if it affects relationships or work'
     ],
     source: 'Universal Wisdom',
-    tags: ['loneliness', 'connection', 'community', 'relationships']
+    tags: ['anger', 'temper', 'emotions', 'self-control']
   },
   {
     id: '9',
-    problemType: 'anger-management',
-    title: 'Managing Anger and Frustration',
+    problemType: 'overwhelm',
+    title: 'Managing Overwhelming Responsibilities',
     practicalPoints: [
-      'Practice the pause technique - count to 10 before responding when angry',
-      'Identify your anger triggers and develop specific strategies for each one',
-      'Use physical exercise to release anger energy in a healthy way',
-      'Practice deep breathing or meditation to calm your nervous system',
-      'Express anger through writing or art before discussing with others',
-      'Learn to communicate assertively rather than aggressively or passively',
-      'Address underlying issues like stress, hurt, or unmet needs that fuel anger',
-      'Seek anger management counseling if anger is affecting your relationships or work'
+      'Write down all responsibilities and prioritize them honestly',
+      'Delegate tasks that others can do - you don\'t have to do everything',
+      'Break large tasks into smaller, manageable steps',
+      'Say "no" to new commitments until you have capacity',
+      'Schedule regular breaks throughout your day',
+      'Focus on one task at a time instead of multitasking',
+      'Seek help from family, friends, or professionals'
     ],
     source: 'Universal Wisdom',
-    tags: ['anger', 'emotions', 'self-control', 'communication']
+    tags: ['overwhelm', 'stress', 'responsibilities', 'time-management']
   },
   {
     id: '10',
-    problemType: 'family-problems',
-    title: 'Resolving Family Dynamics and Issues',
+    problemType: 'addiction',
+    title: 'Overcoming Addiction and Compulsive Behaviors',
     practicalPoints: [
-      'Set clear, healthy boundaries while maintaining love and respect',
-      'Practice forgiveness as a gift to yourself, not necessarily reconciliation',
-      'Focus on changing your own behavior and responses rather than trying to change others',
-      'Seek to understand family patterns and generational issues that may be at play',
-      'Communicate directly with family members rather than through intermediaries',
-      'Consider family therapy to work through deep-rooted issues with professional guidance',
-      'Create new, positive traditions and memories while honoring the past appropriately',
-      'Accept that some family relationships may need to be limited for your wellbeing'
+      'Acknowledge the problem honestly and commit to change',
+      'Reach out for professional help immediately (therapist, rehab, support group)',
+      'Join support groups like AA, NA, or other recovery communities',
+      'Identify and avoid triggers that lead to addictive behaviors',
+      'Develop healthy coping strategies like exercise, meditation, or creative pursuits',
+      'Build a strong support network of family, friends, and sponsors',
+      'Create structure in your daily routine to replace chaotic patterns'
     ],
     source: 'Universal Wisdom',
-    tags: ['family', 'boundaries', 'forgiveness', 'relationships']
+    tags: ['addiction', 'recovery', 'compulsion', 'healing']
+  },
+
+  // Financial & Career
+  {
+    id: '11',
+    problemType: 'debt',
+    title: 'Getting Out of Significant Debt',
+    practicalPoints: [
+      'List all debts with amounts, interest rates, and minimum payments',
+      'Create a realistic budget tracking every dollar of income and expenses',
+      'Use debt avalanche (highest interest first) or snowball (smallest first) method',
+      'Contact creditors to negotiate payment plans or lower interest rates',
+      'Cut unnecessary expenses temporarily and find ways to increase income',
+      'Consider debt consolidation or credit counseling services',
+      'Celebrate small wins as you pay off each debt'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['debt', 'financial', 'money', 'budgeting']
+  },
+  {
+    id: '12',
+    problemType: 'paycheck-to-paycheck',
+    title: 'Breaking the Paycheck-to-Paycheck Cycle',
+    practicalPoints: [
+      'Track every expense for one month to identify spending patterns',
+      'Create a zero-based budget where every dollar has a purpose',
+      'Start an emergency fund with even $5-10 per paycheck',
+      'Look for ways to reduce fixed expenses (housing, utilities, subscriptions)',
+      'Find side income opportunities that fit your schedule',
+      'Meal plan and cook at home to reduce food costs',
+      'Use cash envelopes for discretionary spending to avoid overspending'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['paycheck-to-paycheck', 'financial', 'savings', 'budgeting']
+  },
+  {
+    id: '13',
+    problemType: 'unemployment',
+    title: 'Finding a Job When Unemployed',
+    practicalPoints: [
+      'Treat job searching as your full-time job with daily goals',
+      'Update your resume and LinkedIn profile professionally',
+      'Network actively - reach out to former colleagues and attend industry events',
+      'Apply to 5-10 jobs daily that match your skills',
+      'Consider temporary or freelance work while searching',
+      'Learn new skills through free online courses to boost employability',
+      'Don\'t take rejection personally - it\'s a numbers game'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['unemployment', 'job-search', 'career', 'work']
+  },
+  {
+    id: '14',
+    problemType: 'job-dissatisfaction',
+    title: 'Dealing with a Job You Hate',
+    practicalPoints: [
+      'Identify specifically what you hate - is it the work, boss, culture, or pay?',
+      'Start job searching while employed - it\'s easier to find work when working',
+      'Build emergency savings to give yourself options',
+      'Develop skills outside of work that could lead to career change',
+      'Set boundaries to protect your mental health at current job',
+      'Network and explore other opportunities in your field',
+      'Consider if internal transfer or role change is possible'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['job-dissatisfaction', 'career', 'work', 'unhappiness']
+  },
+  {
+    id: '15',
+    problemType: 'undervalued-at-work',
+    title: 'Feeling Underpaid and Undervalued',
+    practicalPoints: [
+      'Research market salary for your role and experience level',
+      'Document your accomplishments and value to the company',
+      'Schedule a meeting with your manager to discuss compensation',
+      'Present evidence of your contributions and market data',
+      'Consider negotiating for benefits if salary increase isn\'t possible',
+      'Be prepared to look for opportunities elsewhere if not valued',
+      'Continue developing skills that increase your market value'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['undervalued', 'salary', 'career', 'negotiation']
+  },
+  {
+    id: '16',
+    problemType: 'career-stagnation',
+    title: 'Overcoming Career Stagnation',
+    practicalPoints: [
+      'Have an honest conversation with your manager about growth opportunities',
+      'Seek mentorship from senior colleagues or external professionals',
+      'Take on stretch projects or cross-functional opportunities',
+      'Invest in professional development - courses, certifications, conferences',
+      'Build your professional network actively',
+      'Consider lateral moves that offer learning opportunities',
+      'Explore opportunities outside your current organization if needed'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['career-stagnation', 'growth', 'professional-development', 'advancement']
+  },
+  {
+    id: '17',
+    problemType: 'skill-gap',
+    title: 'Developing Skills for Your Dream Job',
+    practicalPoints: [
+      'Research exactly what skills are required for your target role',
+      'Create a learning plan with specific skills and timeline',
+      'Use free resources like YouTube, Coursera, edX for initial learning',
+      'Practice skills through personal projects or volunteer work',
+      'Join online communities related to the skills you\'re learning',
+      'Find a mentor who has the skills you want to develop',
+      'Be patient - skill development takes time and consistent practice'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['skills', 'learning', 'career-development', 'education']
+  },
+  {
+    id: '18',
+    problemType: 'work-life-balance',
+    title: 'Achieving Work-Life Balance',
+    practicalPoints: [
+      'Set clear boundaries - define work hours and stick to them',
+      'Turn off work notifications outside of work hours',
+      'Schedule personal time as seriously as work meetings',
+      'Learn to delegate and say no to non-essential tasks',
+      'Take regular breaks throughout the workday',
+      'Use vacation time fully - don\'t let it accumulate unused',
+      'Communicate your boundaries clearly with colleagues and managers'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['work-life-balance', 'boundaries', 'wellness', 'time-management']
+  },
+  {
+    id: '19',
+    problemType: 'business-failure',
+    title: 'Dealing with Failing Business',
+    practicalPoints: [
+      'Analyze cash flow honestly - know exactly where money goes',
+      'Identify core profitable products/services and focus on them',
+      'Cut unnecessary expenses immediately',
+      'Reach out to customers for feedback and testimonials',
+      'Pivot or adjust business model based on market feedback',
+      'Seek advice from business mentors or consultants',
+      'Know when to close - sometimes the best decision is to stop and start fresh'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['business', 'entrepreneurship', 'failure', 'pivot']
+  },
+  {
+    id: '20',
+    problemType: 'poverty-fear',
+    title: 'Overcoming Fear of Poverty',
+    practicalPoints: [
+      'Face your fears by writing down worst-case scenarios and plans for each',
+      'Build emergency fund gradually - even small amounts create security',
+      'Develop multiple income streams to reduce financial vulnerability',
+      'Invest in skills that will always be valuable',
+      'Practice gratitude for what you have to shift from scarcity mindset',
+      'Connect with others who overcame financial hardship',
+      'Remember that your worth is not defined by your bank account'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['fear', 'poverty', 'financial-security', 'mindset']
+  },
+
+  // Relationships & Social Life
+  {
+    id: '21',
+    problemType: 'loneliness',
+    title: 'Overcoming Deep Loneliness',
+    practicalPoints: [
+      'Reach out to one person each day - even a simple text counts',
+      'Join clubs, classes, or volunteer organizations based on your interests',
+      'Practice self-compassion and develop a positive relationship with yourself',
+      'Use technology mindfully to connect genuinely, not just scroll',
+      'Be vulnerable and authentic in conversations to build deeper connections',
+      'Consider adopting a pet for companionship if circumstances allow',
+      'Attend community events, religious services, or local gatherings regularly'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['loneliness', 'isolation', 'connection', 'relationships']
+  },
+  {
+    id: '22',
+    problemType: 'breakup',
+    title: 'Healing from a Painful Breakup',
+    practicalPoints: [
+      'Allow yourself to grieve - it\'s okay to feel sad, angry, or confused',
+      'Cut contact with ex-partner initially to give yourself space to heal',
+      'Remove reminders and avoid checking their social media',
+      'Lean on supportive friends and family for emotional support',
+      'Rediscover hobbies and interests you may have neglected',
+      'Focus on self-improvement and personal growth',
+      'Journal about lessons learned and what you want in future relationships'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['breakup', 'heartbreak', 'relationships', 'healing']
+  },
+  {
+    id: '23',
+    problemType: 'relationship-fighting',
+    title: 'Stopping Constant Fighting with Partner',
+    practicalPoints: [
+      'Practice active listening - truly hear your partner without preparing your response',
+      'Use "I feel" statements instead of "you always" accusations',
+      'Take timeouts during heated arguments to cool down',
+      'Identify underlying needs causing the fights, not just surface issues',
+      'Schedule regular check-ins to discuss concerns before they escalate',
+      'Focus on solving problems together rather than winning arguments',
+      'Consider couples counseling to learn healthy communication skills'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['relationships', 'fighting', 'conflict', 'communication']
+  },
+  {
+    id: '24',
+    problemType: 'no-friends',
+    title: 'Making Friends When You Feel You Have None',
+    practicalPoints: [
+      'Join groups or activities aligned with your interests (book clubs, sports, etc.)',
+      'Volunteer for causes you care about to meet like-minded people',
+      'Take initiative - invite acquaintances for coffee or activities',
+      'Be consistent - show up regularly to same places to build familiarity',
+      'Practice conversation skills - ask questions and show genuine interest',
+      'Use apps like Meetup or Bumble BFF to find friendship opportunities',
+      'Be patient - genuine friendships take time to develop'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['friends', 'friendships', 'social-life', 'connection']
+  },
+  {
+    id: '25',
+    problemType: 'family-conflict',
+    title: 'Resolving Serious Family Conflicts',
+    practicalPoints: [
+      'Set clear, healthy boundaries while maintaining respect',
+      'Communicate directly with involved family members, avoid intermediaries',
+      'Listen to understand their perspective, even if you disagree',
+      'Focus on changing your responses, not trying to change them',
+      'Consider family therapy for deep-rooted issues',
+      'Practice forgiveness as a gift to yourself, not necessarily reconciliation',
+      'Accept that some relationships may need to be limited for your wellbeing'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['family', 'conflict', 'boundaries', 'relationships']
+  },
+  {
+    id: '26',
+    problemType: 'betrayal',
+    title: 'Healing from Betrayal and Broken Trust',
+    practicalPoints: [
+      'Allow yourself to feel anger and hurt - these emotions are valid',
+      'Decide if the relationship is worth rebuilding or if you need to move on',
+      'If rebuilding, the betrayer must take full accountability and show change',
+      'Set clear expectations and boundaries moving forward',
+      'Work through trust issues with a therapist if needed',
+      'Practice self-care and surround yourself with supportive people',
+      'Remember that healing from betrayal takes significant time'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['betrayal', 'trust', 'relationships', 'healing']
+  },
+  {
+    id: '27',
+    problemType: 'commitment-fear',
+    title: 'Overcoming Fear of Commitment',
+    practicalPoints: [
+      'Explore the root cause - past hurt, fear of loss of freedom, or something else?',
+      'Challenge catastrophic thinking about commitment',
+      'Take small steps toward commitment rather than all-or-nothing approach',
+      'Communicate honestly with your partner about your fears',
+      'Work with a therapist to address underlying attachment issues',
+      'Observe healthy committed relationships to reframe your understanding',
+      'Remember that vulnerability is strength, not weakness'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['commitment', 'fear', 'relationships', 'intimacy']
+  },
+  {
+    id: '28',
+    problemType: 'feeling-burdensome',
+    title: 'Overcoming Feeling Like a Burden',
+    practicalPoints: [
+      'Challenge the thought - ask for evidence that you\'re actually a burden',
+      'Remember that people who care about you want to support you',
+      'Practice receiving help gracefully - it\'s a gift to others to let them help',
+      'Look for ways to contribute, even small gestures of kindness',
+      'Work on self-worth independently of what you can "offer" others',
+      'Communicate your feelings to trusted people instead of withdrawing',
+      'Seek therapy to address underlying feelings of unworthiness'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['burden', 'self-worth', 'relationships', 'mental-health']
+  },
+  {
+    id: '29',
+    problemType: 'social-anxiety',
+    title: 'Managing Social Anxiety',
+    practicalPoints: [
+      'Start with small, low-pressure social situations and gradually build up',
+      'Practice deep breathing before and during social events',
+      'Prepare conversation topics or questions ahead of time',
+      'Focus on listening to others rather than worrying about yourself',
+      'Challenge negative thoughts about how others perceive you',
+      'Remember that most people are too focused on themselves to judge you',
+      'Consider cognitive behavioral therapy (CBT) for social anxiety'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['social-anxiety', 'anxiety', 'social-life', 'fear']
+  },
+  {
+    id: '30',
+    problemType: 'not-understood',
+    title: 'Dealing with Feeling Misunderstood',
+    practicalPoints: [
+      'Improve your communication - be clearer and more specific',
+      'Find communities or groups where people share your experiences',
+      'Practice self-validation - you don\'t need everyone to understand you',
+      'Express yourself through creative outlets like writing or art',
+      'Seek therapy to process feelings of isolation',
+      'Remember that being unique is valuable, not a flaw',
+      'Focus on quality connections with few people who truly get you'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['misunderstood', 'communication', 'isolation', 'identity']
+  },
+
+  // Health & Physical Well-being
+  {
+    id: '31',
+    problemType: 'chronic-illness',
+    title: 'Coping with Chronic Illness and Pain',
+    practicalPoints: [
+      'Build a healthcare team you trust and communicate openly with them',
+      'Learn everything you can about your condition',
+      'Join support groups for people with similar conditions',
+      'Pace yourself - balance activity with rest to avoid flare-ups',
+      'Practice pain management techniques like meditation and gentle movement',
+      'Advocate for yourself in medical settings',
+      'Focus on what you can control and find meaning beyond your illness'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['chronic-illness', 'pain', 'health', 'coping']
+  },
+  {
+    id: '32',
+    problemType: 'body-image',
+    title: 'Improving Body Image and Self-Acceptance',
+    practicalPoints: [
+      'Unfollow social media accounts that trigger negative body comparisons',
+      'Practice body neutrality - focus on what your body can do, not how it looks',
+      'Challenge negative self-talk about your appearance',
+      'Wear clothes that make you feel comfortable and confident',
+      'Surround yourself with body-positive people and content',
+      'Practice gratitude for your body\'s functions and capabilities',
+      'Seek therapy if body image issues significantly impact your life'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['body-image', 'self-acceptance', 'confidence', 'health']
+  },
+  {
+    id: '33',
+    problemType: 'fatigue',
+    title: 'Overcoming Constant Tiredness and Lack of Energy',
+    practicalPoints: [
+      'Get blood work done to rule out medical issues (anemia, thyroid, etc.)',
+      'Prioritize 7-9 hours of quality sleep consistently',
+      'Exercise regularly - even light activity boosts energy long-term',
+      'Eat balanced meals with protein, healthy fats, and complex carbs',
+      'Stay hydrated throughout the day',
+      'Limit caffeine and sugar which cause energy crashes',
+      'Manage stress through relaxation techniques'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['fatigue', 'tiredness', 'energy', 'health']
+  },
+  {
+    id: '34',
+    problemType: 'diet-exercise',
+    title: 'Sticking to Healthy Diet and Exercise',
+    practicalPoints: [
+      'Start small with one habit at a time rather than overhauling everything',
+      'Make it convenient - prep meals, keep gym bag ready, schedule workouts',
+      'Find physical activities you genuinely enjoy',
+      'Focus on how healthy habits make you feel, not just appearance goals',
+      'Track progress to stay motivated',
+      'Build accountability through workout partners or apps',
+      'Be kind to yourself when you slip up - consistency matters more than perfection'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['diet', 'exercise', 'health', 'habits']
+  },
+  {
+    id: '35',
+    problemType: 'insomnia',
+    title: 'Overcoming Insomnia and Sleep Problems',
+    practicalPoints: [
+      'Maintain consistent sleep and wake times, even on weekends',
+      'Create a bedtime routine that signals your body to wind down',
+      'Make your bedroom dark, quiet, cool, and comfortable',
+      'Avoid screens for at least 1 hour before bed',
+      'Limit caffeine after 2 PM and avoid alcohol close to bedtime',
+      'Try relaxation techniques like progressive muscle relaxation or guided meditation',
+      'Consult a sleep specialist if insomnia persists'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['insomnia', 'sleep', 'health', 'rest']
+  },
+  {
+    id: '36',
+    problemType: 'aging-health',
+    title: 'Managing Health Concerns as You Age',
+    practicalPoints: [
+      'Stay proactive with regular check-ups and screenings',
+      'Focus on preventive care - nutrition, exercise, stress management',
+      'Build and maintain social connections for mental health',
+      'Keep learning and challenging your mind',
+      'Accept changes with grace while staying active within your abilities',
+      'Plan for future healthcare needs and discuss wishes with family',
+      'Find purpose and meaning beyond physical capabilities'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['aging', 'health', 'wellness', 'prevention']
+  },
+  {
+    id: '37',
+    problemType: 'undiagnosed-health',
+    title: 'Dealing with Undiagnosed Health Problems',
+    practicalPoints: [
+      'Keep detailed symptom journal with dates, severity, and patterns',
+      'Seek second or third opinions from different doctors',
+      'Research and suggest possible conditions to your doctor',
+      'Request referrals to specialists when appropriate',
+      'Advocate firmly for yourself - you know your body best',
+      'Join online communities for people with similar symptoms',
+      'Don\'t give up - persist until you get answers'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['health', 'diagnosis', 'medical', 'advocacy']
+  },
+
+  // Personal Growth & Purpose
+  {
+    id: '38',
+    problemType: 'no-purpose',
+    title: 'Finding Meaning and Purpose in Life',
+    practicalPoints: [
+      'Reflect on moments when you felt most fulfilled - what were you doing?',
+      'Explore your values - what matters most to you?',
+      'Try different activities and experiences to discover what resonates',
+      'Look for ways to contribute to something larger than yourself',
+      'Consider what problems in the world you feel called to address',
+      'Talk to people living purposeful lives about their journeys',
+      'Remember purpose often emerges through action, not just contemplation'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['purpose', 'meaning', 'fulfillment', 'life-direction']
+  },
+  {
+    id: '39',
+    problemType: 'not-living-up-to-potential',
+    title: 'Living Up to Your Potential',
+    practicalPoints: [
+      'Define what "potential" means to you, not others\' expectations',
+      'Identify specific areas where you want to grow',
+      'Set concrete, measurable goals with timelines',
+      'Remove obstacles and distractions systematically',
+      'Build habits that support your goals',
+      'Find mentors or role models in areas you want to develop',
+      'Celebrate progress and be patient with yourself'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['potential', 'growth', 'goals', 'achievement']
+  },
+  {
+    id: '40',
+    problemType: 'procrastination',
+    title: 'Overcoming Procrastination',
+    practicalPoints: [
+      'Break large tasks into tiny, manageable steps',
+      'Use the 2-minute rule - if it takes less than 2 minutes, do it now',
+      'Remove distractions from your environment',
+      'Use time-blocking to schedule focused work periods',
+      'Identify what you\'re avoiding (fear, perfectionism, etc.) and address it',
+      'Start with the hardest task first thing in the morning',
+      'Reward yourself for completing tasks'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['procrastination', 'productivity', 'time-management', 'habits']
+  },
+  {
+    id: '41',
+    problemType: 'stagnation',
+    title: 'Breaking Through Personal Stagnation',
+    practicalPoints: [
+      'Try something completely new and outside your comfort zone',
+      'Change your routine - even small changes can spark growth',
+      'Set learning goals in areas that interest you',
+      'Seek new perspectives through books, courses, or conversations',
+      'Surround yourself with people who are growing',
+      'Reflect on what\'s keeping you stuck and address it directly',
+      'Take action even when you don\'t feel ready'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['stagnation', 'growth', 'change', 'progress']
+  },
+  {
+    id: '42',
+    problemType: 'comparison',
+    title: 'Stop Comparing Yourself to Others',
+    practicalPoints: [
+      'Limit social media use - it\'s everyone\'s highlight reel',
+      'Practice gratitude for your own journey and achievements',
+      'Focus on competing with your past self, not others',
+      'Remember everyone\'s path is different with different circumstances',
+      'Celebrate others\' success without diminishing your own worth',
+      'Identify your unique strengths and develop them',
+      'Seek therapy if comparison causes significant distress'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['comparison', 'self-worth', 'social-media', 'mindset']
+  },
+  {
+    id: '43',
+    problemType: 'fear-of-failure',
+    title: 'Overcoming Fear of Failure',
+    practicalPoints: [
+      'Reframe failure as learning and growth opportunity',
+      'Start small to build confidence through small successes',
+      'Identify worst-case scenarios and create plans for them',
+      'Study successful people who failed many times before succeeding',
+      'Practice self-compassion when things don\'t work out',
+      'Focus on effort and process rather than just outcomes',
+      'Remember that not trying is a guarantee of failure'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['fear', 'failure', 'risk', 'courage']
+  },
+  {
+    id: '44',
+    problemType: 'no-life-direction',
+    title: 'Finding Direction When Lost in Life',
+    practicalPoints: [
+      'Try many different things to discover what resonates',
+      'Reflect on your values, strengths, and interests',
+      'Talk to people in various careers and lifestyles',
+      'Keep a journal to track what brings you joy and meaning',
+      'Give yourself permission to change direction - it\'s not wasted time',
+      'Work with a life coach or career counselor',
+      'Remember that clarity comes through action, not endless planning'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['direction', 'purpose', 'career', 'life-path']
+  },
+  {
+    id: '45',
+    problemType: 'wasted-time',
+    title: 'Dealing with Feeling You\'ve Wasted Time',
+    practicalPoints: [
+      'Recognize that all experiences, even "wasted" time, teach us something',
+      'Focus on what you can control now, not unchangeable past',
+      'Extract lessons from past experiences to inform future choices',
+      'Forgive yourself - everyone makes choices they later regret',
+      'Create a compelling vision for your future',
+      'Take immediate action toward meaningful goals',
+      'Remember it\'s never too late to change direction'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['regret', 'time', 'past', 'moving-forward']
+  },
+
+  // General Life States & Situations
+  {
+    id: '46',
+    problemType: 'boredom',
+    title: 'Overcoming Boredom with Daily Routine',
+    practicalPoints: [
+      'Add one new activity to your routine each week',
+      'Learn a new skill or hobby that genuinely interests you',
+      'Change your environment - work from different places, explore new areas',
+      'Set exciting goals that challenge you',
+      'Connect with new people through classes or groups',
+      'Break up routines with spontaneous adventures',
+      'Use boredom as a signal to reassess if your life aligns with your values'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['boredom', 'routine', 'life-satisfaction', 'change']
+  },
+  {
+    id: '47',
+    problemType: 'stuck-in-place',
+    title: 'Feeling Stuck in a Place You Don\'t Like',
+    practicalPoints: [
+      'Create a concrete plan to move, even if it takes time to execute',
+      'Save money specifically for relocation',
+      'Research potential places thoroughly before moving',
+      'Build a support network before you move if possible',
+      'Start with short visits to test if you like the new place',
+      'Make the most of where you are while planning your exit',
+      'Remember that location changes don\'t solve internal problems'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['location', 'stuck', 'moving', 'change']
+  },
+  {
+    id: '48',
+    problemType: 'grief',
+    title: 'Grieving the Loss of a Loved One',
+    practicalPoints: [
+      'Allow yourself to feel all emotions without judgment - there\'s no timeline',
+      'Create meaningful rituals or memorials to honor your loved one',
+      'Maintain connections with supportive people who understand your grief',
+      'Take care of physical health through proper nutrition, sleep, and gentle exercise',
+      'Express feelings through journaling, art, music, or other creative outlets',
+      'Seek professional grief counseling when grief feels overwhelming',
+      'Find ways to carry forward their legacy or lessons'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['grief', 'loss', 'death', 'mourning']
+  },
+  {
+    id: '49',
+    problemType: 'societal-pressure',
+    title: 'Dealing with Societal and Family Expectations',
+    practicalPoints: [
+      'Define your own values and life goals independent of others',
+      'Set boundaries with family and friends about unsolicited advice',
+      'Communicate your choices clearly and confidently',
+      'Surround yourself with people who respect your choices',
+      'Remember you\'re living your life, not theirs',
+      'Seek therapy to work through guilt about not meeting expectations',
+      'Find role models who live authentically despite pressure'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['pressure', 'expectations', 'boundaries', 'authenticity']
+  },
+  {
+    id: '50',
+    problemType: 'ethical-dilemma',
+    title: 'Navigating Difficult Moral and Ethical Dilemmas',
+    practicalPoints: [
+      'Clarify your core values and principles',
+      'Consider consequences of each choice for all involved',
+      'Seek counsel from trusted, wise advisors',
+      'Research ethical frameworks that apply to your situation',
+      'Listen to your intuition and conscience',
+      'Accept that some situations have no perfect answer',
+      'Make the best choice you can with available information, then commit to it'
+    ],
+    source: 'Universal Wisdom',
+    tags: ['ethics', 'morality', 'dilemma', 'decision-making']
   }
 ];
 
