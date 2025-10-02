@@ -1528,20 +1528,55 @@ export const mockSolutions: Solution[] = [
 ];
 
 export const getSolutionByProblemType = (problemType: string): Solution | null => {
+  const lowercaseType = problemType.toLowerCase().trim();
+  console.log('Searching for problem type:', lowercaseType);
+  
   return mockSolutions.find(solution => 
-    solution.problemType.toLowerCase().includes(problemType.toLowerCase()) ||
-    solution.tags.some(tag => tag.toLowerCase().includes(problemType.toLowerCase()))
+    solution.problemType.toLowerCase().includes(lowercaseType) ||
+    solution.tags.some(tag => tag.toLowerCase().includes(lowercaseType)) ||
+    lowercaseType.includes(solution.problemType.toLowerCase()) ||
+    solution.title.toLowerCase().includes(lowercaseType)
   ) || null;
 };
 
 export const searchSolutions = (query: string): Solution[] => {
-  const lowercaseQuery = query.toLowerCase();
-  return mockSolutions.filter(solution =>
-    solution.title.toLowerCase().includes(lowercaseQuery) ||
-    solution.problemType.toLowerCase().includes(lowercaseQuery) ||
-    solution.practicalPoints.some(point => point.toLowerCase().includes(lowercaseQuery)) ||
-    solution.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
-  );
+  const lowercaseQuery = query.toLowerCase().trim();
+  console.log('Searching solutions with query:', lowercaseQuery);
+  
+  const results = mockSolutions.filter(solution => {
+    // Check title
+    if (solution.title.toLowerCase().includes(lowercaseQuery)) return true;
+    
+    // Check problem type (both ways)
+    if (solution.problemType.toLowerCase().includes(lowercaseQuery)) return true;
+    if (lowercaseQuery.includes(solution.problemType.toLowerCase())) return true;
+    
+    // Check tags
+    if (solution.tags.some(tag => 
+      tag.toLowerCase().includes(lowercaseQuery) || 
+      lowercaseQuery.includes(tag.toLowerCase())
+    )) return true;
+    
+    // Check practical points
+    if (solution.practicalPoints.some(point => 
+      point.toLowerCase().includes(lowercaseQuery)
+    )) return true;
+    
+    // Split query into words and check each
+    const words = lowercaseQuery.split(/\s+/);
+    for (const word of words) {
+      if (word.length < 3) continue; // Skip very short words
+      
+      if (solution.problemType.toLowerCase().includes(word)) return true;
+      if (solution.title.toLowerCase().includes(word)) return true;
+      if (solution.tags.some(tag => tag.toLowerCase().includes(word))) return true;
+    }
+    
+    return false;
+  });
+  
+  console.log('Found solutions:', results.length);
+  return results;
 };
 
 export const getRandomSolution = (): Solution => {

@@ -84,15 +84,15 @@ export function analyzeEmotionsForTracking(text: string): string[] {
   const lowercaseText = text.toLowerCase();
   
   const emotionPatterns = {
-    joy: ['happy', 'joy', 'excited', 'cheerful', 'delighted', 'pleased', 'content'],
-    sadness: ['sad', 'depressed', 'down', 'melancholy', 'grief', 'sorrow', 'upset'],
-    anger: ['angry', 'frustrated', 'mad', 'irritated', 'furious', 'rage', 'annoyed'],
-    anxiety: ['anxious', 'worried', 'nervous', 'stressed', 'overwhelmed', 'panic'],
-    fear: ['scared', 'afraid', 'fearful', 'terrified', 'nervous', 'apprehensive'],
-    confusion: ['confused', 'lost', 'uncertain', 'unclear', 'puzzled', 'bewildered'],
+    anxiety: ['anxious', 'worried', 'nervous', 'stressed', 'overwhelmed', 'panic', 'anxiety', 'tense', 'uneasy'],
+    sadness: ['sad', 'depressed', 'down', 'melancholy', 'grief', 'sorrow', 'upset', 'unhappy', 'miserable'],
+    anger: ['angry', 'frustrated', 'mad', 'irritated', 'furious', 'rage', 'annoyed', 'pissed'],
+    fear: ['scared', 'afraid', 'fearful', 'terrified', 'nervous', 'apprehensive', 'fear'],
+    confusion: ['confused', 'lost', 'uncertain', 'unclear', 'puzzled', 'bewildered', 'stuck'],
+    joy: ['happy', 'joy', 'excited', 'cheerful', 'delighted', 'pleased', 'content', 'great'],
     peace: ['calm', 'peaceful', 'serene', 'tranquil', 'relaxed', 'centered'],
     love: ['love', 'compassion', 'affection', 'care', 'devotion', 'kindness'],
-    gratitude: ['grateful', 'thankful', 'blessed', 'appreciative']
+    gratitude: ['grateful', 'thankful', 'blessed', 'appreciative', 'thanks']
   };
   
   Object.entries(emotionPatterns).forEach(([emotion, patterns]) => {
@@ -107,15 +107,21 @@ export function analyzeEmotionsForTracking(text: string): string[] {
 // Detect state of mind from text
 export function detectStateOfMind(text: string): string {
   const statePatterns = {
+    'Anxiety': ['anxiety', 'anxious', 'worried', 'nervous', 'panic', 'stress', 'tense'],
+    'Depression': ['depressed', 'depression', 'sad', 'empty', 'hopeless', 'worthless'],
+    'Financial Issues': ['money', 'debt', 'financial', 'broke', 'poor', 'paycheck', 'bills', 'afford'],
+    'Career Issues': ['job', 'career', 'work', 'employment', 'unemployed', 'workplace', 'boss'],
+    'Relationship Issues': ['relationship', 'marriage', 'partner', 'boyfriend', 'girlfriend', 'breakup', 'fighting'],
+    'Family Issues': ['family', 'parents', 'siblings', 'children', 'mother', 'father'],
+    'Loneliness': ['lonely', 'alone', 'isolated', 'no friends', 'solitude'],
+    'Health Issues': ['health', 'sick', 'illness', 'pain', 'chronic', 'medical'],
     'Seeking Guidance': ['help', 'guidance', 'advice', 'what should', 'confused', 'lost'],
     'Emotional Distress': ['hurt', 'pain', 'suffering', 'difficult', 'hard time', 'struggle'],
     'Spiritual Inquiry': ['meaning', 'purpose', 'spiritual', 'divine', 'god', 'soul'],
     'Gratitude': ['thank', 'grateful', 'blessed', 'appreciate', 'thankful'],
     'Reflection': ['thinking', 'pondering', 'reflecting', 'considering', 'wondering'],
     'Decision Making': ['decide', 'choice', 'option', 'should I', 'what if'],
-    'Personal Growth': ['improve', 'better', 'grow', 'development', 'progress'],
-    'Relationship Issues': ['family', 'friend', 'relationship', 'marriage', 'love'],
-    'Life Challenges': ['problem', 'challenge', 'issue', 'difficulty', 'obstacle']
+    'Personal Growth': ['improve', 'better', 'grow', 'development', 'progress']
   };
   
   const lowercaseText = text.toLowerCase();
