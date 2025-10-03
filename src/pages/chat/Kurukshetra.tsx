@@ -190,120 +190,122 @@ const Kurukshetra: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Chat Container */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ 
-            opacity: 1, 
-            y: 0, 
-            x: isSolutionOpen ? '-20%' : 0,
-            width: isSolutionOpen ? '55%' : '100%'
-          }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="h-[60vh] flex flex-col relative"
-        >
-          <Card className="glass border-border/20 flex-1 flex flex-col">
-            <CardContent className="p-0 flex-1 flex flex-col">
-              {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-4">
-                {messages.map((message) => (
-                  <motion.div
-                    key={message.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-                  >
-                    <div className={`flex items-start space-x-3 max-w-[80%] ${message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                        message.sender === 'user' 
-                          ? 'bg-spiritual-blue' 
-                          : 'bg-gradient-to-r from-spiritual-purple to-spiritual-gold'
-                      }`}>
-                        {message.sender === 'user' ? (
-                          <User className="w-4 h-4 text-white" />
-                        ) : (
-                          <Crown className="w-4 h-4 text-white" />
-                        )}
-                      </div>
-                      <div className={`p-4 rounded-lg ${
-                        message.sender === 'user'
-                          ? 'bg-spiritual-blue/20 border border-spiritual-blue/30'
-                          : 'bg-gradient-to-r from-spiritual-purple/20 to-spiritual-gold/20 border border-spiritual-purple/30'
-                      }`}>
-                        <p className="text-text-primary leading-relaxed">{message.content}</p>
-                        <span className="text-xs text-text-muted mt-2 block">
-                          {message.timestamp.toLocaleTimeString()}
-                        </span>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-                {isLoading && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="flex justify-start"
-                  >
-                    <div className="flex items-start space-x-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-spiritual-purple to-spiritual-gold flex items-center justify-center">
-                        <Crown className="w-4 h-4 text-white" />
-                      </div>
-                      <div className="p-4 rounded-lg bg-gradient-to-r from-spiritual-purple/20 to-spiritual-gold/20 border border-spiritual-purple/30">
-                        <div className="flex space-x-1">
-                          <motion.div
-                            className="w-2 h-2 bg-spiritual-purple rounded-full"
-                            animate={{ opacity: [0.5, 1, 0.5] }}
-                            transition={{ duration: 1, repeat: Infinity, delay: 0 }}
-                          />
-                          <motion.div
-                            className="w-2 h-2 bg-spiritual-purple rounded-full"
-                            animate={{ opacity: [0.5, 1, 0.5] }}
-                            transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
-                          />
-                          <motion.div
-                            className="w-2 h-2 bg-spiritual-purple rounded-full"
-                            animate={{ opacity: [0.5, 1, 0.5] }}
-                            transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
-                          />
+        {/* Chat and Solution Container */}
+        <div className="flex gap-4 h-[60vh] relative">
+          {/* Chat Container */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0,
+              width: isSolutionOpen ? '55%' : '100%'
+            }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col"
+          >
+            <Card className="glass border-border/20 flex-1 flex flex-col h-full">
+              <CardContent className="p-0 flex-1 flex flex-col">
+                {/* Messages */}
+                <div className="flex-1 overflow-y-auto p-6 space-y-4">
+                  {messages.map((message) => (
+                    <motion.div
+                      key={message.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                    >
+                      <div className={`flex items-start space-x-3 max-w-[80%] ${message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                          message.sender === 'user' 
+                            ? 'bg-spiritual-blue' 
+                            : 'bg-gradient-to-r from-spiritual-purple to-spiritual-gold'
+                        }`}>
+                          {message.sender === 'user' ? (
+                            <User className="w-4 h-4 text-white" />
+                          ) : (
+                            <Crown className="w-4 h-4 text-white" />
+                          )}
+                        </div>
+                        <div className={`p-4 rounded-lg ${
+                          message.sender === 'user'
+                            ? 'bg-spiritual-blue/20 border border-spiritual-blue/30'
+                            : 'bg-gradient-to-r from-spiritual-purple/20 to-spiritual-gold/20 border border-spiritual-purple/30'
+                        }`}>
+                          <p className="text-text-primary leading-relaxed">{message.content}</p>
+                          <span className="text-xs text-text-muted mt-2 block">
+                            {message.timestamp.toLocaleTimeString()}
+                          </span>
                         </div>
                       </div>
-                    </div>
-                  </motion.div>
-                )}
-                <div ref={messagesEndRef} />
-              </div>
-
-              {/* Input Area */}
-              <div className="p-6 border-t border-border/20">
-                <div className="flex space-x-3">
-                  <Input
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder="Share your dharmic dilemma with Krishna..."
-                    className="flex-1 bg-dark-secondary/50 border-border/30 focus:border-spiritual-purple"
-                    disabled={isLoading}
-                  />
-                  <Button
-                    onClick={handleSolutionRequest}
-                    disabled={!lastUserMessage.trim() || isLoading}
-                    className="bg-gradient-to-r from-spiritual-gold to-spiritual-purple hover:opacity-90 px-4"
-                    title="Get practical solutions"
-                  >
-                    <Lightbulb className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    onClick={handleSendMessage}
-                    disabled={!inputValue.trim() || isLoading}
-                    className="bg-gradient-to-r from-spiritual-purple to-spiritual-gold hover:opacity-90 px-4"
-                  >
-                    <Send className="w-4 h-4" />
-                  </Button>
+                    </motion.div>
+                  ))}
+                  {isLoading && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="flex justify-start"
+                    >
+                      <div className="flex items-start space-x-3">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-spiritual-purple to-spiritual-gold flex items-center justify-center">
+                          <Crown className="w-4 h-4 text-white" />
+                        </div>
+                        <div className="p-4 rounded-lg bg-gradient-to-r from-spiritual-purple/20 to-spiritual-gold/20 border border-spiritual-purple/30">
+                          <div className="flex space-x-1">
+                            <motion.div
+                              className="w-2 h-2 bg-spiritual-purple rounded-full"
+                              animate={{ opacity: [0.5, 1, 0.5] }}
+                              transition={{ duration: 1, repeat: Infinity, delay: 0 }}
+                            />
+                            <motion.div
+                              className="w-2 h-2 bg-spiritual-purple rounded-full"
+                              animate={{ opacity: [0.5, 1, 0.5] }}
+                              transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
+                            />
+                            <motion.div
+                              className="w-2 h-2 bg-spiritual-purple rounded-full"
+                              animate={{ opacity: [0.5, 1, 0.5] }}
+                              transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                  <div ref={messagesEndRef} />
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+
+                {/* Input Area */}
+                <div className="p-6 border-t border-border/20">
+                  <div className="flex space-x-3">
+                    <Input
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Share your dharmic dilemma with Krishna..."
+                      className="flex-1 bg-dark-secondary/50 border-border/30 focus:border-spiritual-purple"
+                      disabled={isLoading}
+                    />
+                    <Button
+                      onClick={handleSolutionRequest}
+                      disabled={!lastUserMessage.trim() || isLoading}
+                      className="bg-gradient-to-r from-spiritual-gold to-spiritual-purple hover:opacity-90 px-4"
+                      title="Get practical solutions"
+                    >
+                      <Lightbulb className="w-4 h-4" />
+                    </Button>
+                    <Button
+                      onClick={handleSendMessage}
+                      disabled={!inputValue.trim() || isLoading}
+                      className="bg-gradient-to-r from-spiritual-purple to-spiritual-gold hover:opacity-90 px-4"
+                    >
+                      <Send className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
 
           {/* Solution Panel */}
           <SolutionPanel
@@ -311,7 +313,7 @@ const Kurukshetra: React.FC = () => {
             onClose={() => setIsSolutionOpen(false)}
             solution={currentSolution}
           />
-        </motion.div>
+        </div>
       </main>
     </div>
   );

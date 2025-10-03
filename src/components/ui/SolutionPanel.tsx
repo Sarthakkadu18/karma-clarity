@@ -16,13 +16,13 @@ export const SolutionPanel: React.FC<SolutionPanelProps> = ({ isOpen, onClose, s
     <AnimatePresence>
       {isOpen && solution && (
         <motion.div
-          initial={{ x: '100%', opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: '100%', opacity: 0 }}
-          transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-          className="absolute top-0 right-0 w-[45%] h-full bg-dark-primary/95 backdrop-blur-sm border-l border-border/20"
+          initial={{ width: 0, opacity: 0 }}
+          animate={{ width: '45%', opacity: 1 }}
+          exit={{ width: 0, opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="h-full bg-dark-primary/95 backdrop-blur-sm border-l border-border/20 overflow-hidden"
         >
-          <Card className="h-full glass border-border/20 rounded-l-lg rounded-r-none">
+          <Card className="h-full glass border-border/20 rounded-lg">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
               <div className="flex items-center space-x-2">
                 <Lightbulb className="w-5 h-5 text-spiritual-gold" />

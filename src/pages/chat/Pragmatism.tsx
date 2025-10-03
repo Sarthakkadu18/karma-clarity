@@ -158,20 +158,20 @@ const Pragmatism = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ 
-            opacity: 1, 
-            y: 0,
-            x: isSolutionOpen ? '-20%' : 0,
-            width: isSolutionOpen ? '55%' : '100%'
-          }}
-          transition={{ duration: 0.3 }}
-          className="relative"
-        >
-          <Card className="bg-card/50 backdrop-blur-sm border-primary/10 mb-6">
-          <CardContent className="p-6">
-            <div className="space-y-4 h-96 overflow-y-auto">
+        <div className="flex gap-4 h-96 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0,
+              width: isSolutionOpen ? '55%' : '100%'
+            }}
+            transition={{ duration: 0.3 }}
+            className="flex flex-col"
+          >
+            <Card className="bg-card/50 backdrop-blur-sm border-primary/10 mb-6 h-full">
+              <CardContent className="p-6">
+                <div className="space-y-4 h-80 overflow-y-auto">
               {messages.map((message, index) => (
                 <motion.div
                   key={message.id}
@@ -229,10 +229,10 @@ const Pragmatism = () => {
                 </motion.div>
               )}
               
-              <div ref={messagesEndRef} />
-            </div>
-          </CardContent>
-        </Card>
+                <div ref={messagesEndRef} />
+              </div>
+            </CardContent>
+          </Card>
 
           <Card className="bg-card/30 backdrop-blur-sm border-primary/10">
             <CardContent className="p-4">
@@ -263,13 +263,14 @@ const Pragmatism = () => {
               </div>
             </CardContent>
           </Card>
-
-          <SolutionPanel
-            isOpen={isSolutionOpen}
-            onClose={() => setIsSolutionOpen(false)}
-            solution={currentSolution}
-          />
         </motion.div>
+
+        <SolutionPanel
+          isOpen={isSolutionOpen}
+          onClose={() => setIsSolutionOpen(false)}
+          solution={currentSolution}
+        />
+      </div>
       </div>
     </div>
   );

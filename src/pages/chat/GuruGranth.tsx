@@ -157,22 +157,23 @@ const GuruGranth: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Chat Container */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ 
-            opacity: 1, 
-            y: 0,
-            x: isSolutionOpen ? '-20%' : 0,
-            width: isSolutionOpen ? '55%' : '100%'
-          }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="h-[60vh] flex flex-col relative"
-        >
-          <Card className="glass border-border/20 flex-1 flex flex-col">
-            <CardContent className="p-0 flex-1 flex flex-col">
-              {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-4">
+        {/* Chat and Solution Container */}
+        <div className="flex gap-4 h-[60vh] relative">
+          {/* Chat Container */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0,
+              width: isSolutionOpen ? '55%' : '100%'
+            }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col"
+          >
+            <Card className="glass border-border/20 flex-1 flex flex-col h-full">
+              <CardContent className="p-0 flex-1 flex flex-col">
+                {/* Messages */}
+                <div className="flex-1 overflow-y-auto p-6 space-y-4">
                 {messages.map((message) => (
                   <motion.div
                     key={message.id}
@@ -238,39 +239,40 @@ const GuruGranth: React.FC = () => {
                     </div>
                   </motion.div>
                 )}
-                <div ref={messagesEndRef} />
-              </div>
-
-              {/* Input Area */}
-              <div className="p-6 border-t border-border/20">
-                <div className="flex space-x-3">
-                  <Input
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder="Share your spiritual journey with the Guru's wisdom..."
-                    className="flex-1 bg-dark-secondary/50 border-border/30 focus:border-spiritual-gold"
-                    disabled={isLoading}
-                  />
-                  <Button
-                    onClick={handleSolutionRequest}
-                    disabled={!lastUserMessage.trim() || isLoading}
-                    className="bg-gradient-to-r from-spiritual-gold/20 to-spiritual-orange/20 hover:opacity-90 px-4 border border-spiritual-gold/30"
-                    title="Get practical solutions"
-                  >
-                    <Lightbulb className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    onClick={handleSendMessage}
-                    disabled={!inputValue.trim() || isLoading}
-                    className="bg-gradient-to-r from-spiritual-gold to-spiritual-orange hover:opacity-90 px-4"
-                  >
-                    <Send className="w-4 h-4" />
-                  </Button>
+                  <div ref={messagesEndRef} />
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+
+                {/* Input Area */}
+                <div className="p-6 border-t border-border/20">
+                  <div className="flex space-x-3">
+                    <Input
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Share your spiritual journey with the Guru's wisdom..."
+                      className="flex-1 bg-dark-secondary/50 border-border/30 focus:border-spiritual-gold"
+                      disabled={isLoading}
+                    />
+                    <Button
+                      onClick={handleSolutionRequest}
+                      disabled={!lastUserMessage.trim() || isLoading}
+                      className="bg-gradient-to-r from-spiritual-gold/20 to-spiritual-orange/20 hover:opacity-90 px-4 border border-spiritual-gold/30"
+                      title="Get practical solutions"
+                    >
+                      <Lightbulb className="w-4 h-4" />
+                    </Button>
+                    <Button
+                      onClick={handleSendMessage}
+                      disabled={!inputValue.trim() || isLoading}
+                      className="bg-gradient-to-r from-spiritual-gold to-spiritual-orange hover:opacity-90 px-4"
+                    >
+                      <Send className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
 
           {/* Solution Panel */}
           <SolutionPanel
@@ -278,7 +280,7 @@ const GuruGranth: React.FC = () => {
             onClose={() => setIsSolutionOpen(false)}
             solution={currentSolution}
           />
-        </motion.div>
+        </div>
       </main>
     </div>
   );
