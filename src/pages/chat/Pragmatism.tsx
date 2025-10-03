@@ -158,7 +158,7 @@ const Pragmatism = () => {
           </p>
         </motion.div>
 
-        <div className="flex gap-4 h-96 relative">
+        <div className="flex gap-4 h-[calc(100vh-20rem)] relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ 
@@ -169,9 +169,9 @@ const Pragmatism = () => {
             transition={{ duration: 0.3 }}
             className="flex flex-col"
           >
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/10 mb-6 h-full">
-              <CardContent className="p-6">
-                <div className="space-y-4 h-80 overflow-y-auto">
+            <Card className="bg-card/50 backdrop-blur-sm border-primary/10 mb-6 flex-1 flex flex-col">
+              <CardContent className="p-6 flex-1 flex flex-col">
+                <div className="space-y-4 flex-1 overflow-y-auto">
               {messages.map((message, index) => (
                 <motion.div
                   key={message.id}

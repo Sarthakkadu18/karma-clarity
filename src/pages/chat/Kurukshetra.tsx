@@ -191,7 +191,7 @@ const Kurukshetra: React.FC = () => {
         </motion.div>
 
         {/* Chat and Solution Container */}
-        <div className="flex gap-4 h-[60vh] relative">
+        <div className="flex gap-4 h-[calc(100vh-16rem)] relative">
           {/* Chat Container */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
