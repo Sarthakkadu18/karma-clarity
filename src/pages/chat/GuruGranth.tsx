@@ -158,7 +158,7 @@ const GuruGranth: React.FC = () => {
         </motion.div>
 
         {/* Chat and Solution Container */}
-        <div className="flex gap-4 h-[calc(100vh-16rem)] relative">
+        <div className="flex gap-6 h-[calc(100vh-16rem)] relative">
           {/* Chat Container */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -170,10 +170,10 @@ const GuruGranth: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="flex flex-col"
           >
-            <Card className="glass border-border/20 flex-1 flex flex-col h-full">
-              <CardContent className="p-0 flex-1 flex flex-col">
+            <Card className="glass border-border/20 flex-1 flex flex-col h-full overflow-hidden">
+              <CardContent className="p-0 flex-1 flex flex-col overflow-hidden">
                 {/* Messages */}
-                <div className="flex-1 overflow-y-auto p-6 space-y-4">
+                <div className="flex-1 overflow-y-auto p-6 space-y-4 pr-4">
                 {messages.map((message) => (
                   <motion.div
                     key={message.id}

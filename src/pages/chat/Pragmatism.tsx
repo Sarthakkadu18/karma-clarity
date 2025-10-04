@@ -158,7 +158,9 @@ const Pragmatism = () => {
           </p>
         </motion.div>
 
-        <div className="flex gap-4 h-[calc(100vh-20rem)] relative">
+        {/* Chat and Solution Container */}
+        <div className="flex gap-6 h-[calc(100vh-20rem)] relative">
+          {/* Chat Container */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ 
@@ -169,9 +171,10 @@ const Pragmatism = () => {
             transition={{ duration: 0.3 }}
             className="flex flex-col"
           >
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/10 mb-6 flex-1 flex flex-col">
-              <CardContent className="p-6 flex-1 flex flex-col">
-                <div className="space-y-4 flex-1 overflow-y-auto">
+            <Card className="bg-card/50 backdrop-blur-sm border-primary/10 flex-1 flex flex-col overflow-hidden">
+              <CardContent className="p-6 flex-1 flex flex-col overflow-hidden">
+                {/* Messages Area with Scroll */}
+                <div className="space-y-4 flex-1 overflow-y-auto pr-2">
               {messages.map((message, index) => (
                 <motion.div
                   key={message.id}
@@ -229,48 +232,48 @@ const Pragmatism = () => {
                 </motion.div>
               )}
               
-                <div ref={messagesEndRef} />
-              </div>
-            </CardContent>
-          </Card>
+                  <div ref={messagesEndRef} />
+                </div>
 
-          <Card className="bg-card/30 backdrop-blur-sm border-primary/10">
-            <CardContent className="p-4">
-              <div className="flex gap-2">
-                <Input
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Share your challenge for strategic guidance..."
-                  className="flex-1 bg-background/50 border-primary/20 focus:border-primary/40"
-                  disabled={isLoading}
-                />
-                <Button
-                  onClick={handleSolutionRequest}
-                  disabled={!lastUserMessage.trim() || isLoading}
-                  className="bg-secondary hover:bg-secondary/90"
-                  title="Get practical solutions"
-                >
-                  <Lightbulb className="w-4 h-4" />
-                </Button>
-                <Button 
-                  onClick={handleSendMessage}
-                  disabled={!inputValue.trim() || isLoading}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                >
-                  <Send className="w-4 h-4" />
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
+                {/* Input Area */}
+                <div className="pt-4 mt-4 border-t border-border/20">
+                  <div className="flex space-x-3">
+                    <Input
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Share your challenge for strategic guidance..."
+                      className="flex-1 bg-background/50 border-primary/20 focus:border-primary/40"
+                      disabled={isLoading}
+                    />
+                    <Button
+                      onClick={handleSolutionRequest}
+                      disabled={!lastUserMessage.trim() || isLoading}
+                      className="bg-gradient-to-r from-primary to-primary/70 hover:opacity-90 px-4"
+                      title="Get practical solutions"
+                    >
+                      <Lightbulb className="w-4 h-4" />
+                    </Button>
+                    <Button 
+                      onClick={handleSendMessage}
+                      disabled={!inputValue.trim() || isLoading}
+                      className="bg-gradient-to-r from-primary/70 to-primary hover:opacity-90 px-4"
+                    >
+                      <Send className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
 
-        <SolutionPanel
-          isOpen={isSolutionOpen}
-          onClose={() => setIsSolutionOpen(false)}
-          solution={currentSolution}
-        />
-      </div>
+          {/* Solution Panel */}
+          <SolutionPanel
+            isOpen={isSolutionOpen}
+            onClose={() => setIsSolutionOpen(false)}
+            solution={currentSolution}
+          />
+        </div>
       </div>
     </div>
   );
