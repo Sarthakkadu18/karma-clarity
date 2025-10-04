@@ -12,10 +12,15 @@ interface SolutionPanelProps {
 }
 
 export const SolutionPanel: React.FC<SolutionPanelProps> = ({ isOpen, onClose, solution }) => {
-  if (!isOpen || !solution) return null;
-  
   return (
-        <div className="h-full bg-dark-primary/95 backdrop-blur-sm border-l border-border/20 overflow-hidden"
+    <AnimatePresence>
+      {isOpen && solution && (
+        <motion.div
+          initial={{ width: 0, opacity: 0 }}
+          animate={{ width: '45%', opacity: 1 }}
+          exit={{ width: 0, opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="h-full bg-dark-primary/95 backdrop-blur-sm border-l border-border/20 overflow-hidden"
         >
           <Card className="h-full glass border-border/20 rounded-lg">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
@@ -72,6 +77,8 @@ export const SolutionPanel: React.FC<SolutionPanelProps> = ({ isOpen, onClose, s
               </motion.div>
             </CardContent>
           </Card>
-        </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };

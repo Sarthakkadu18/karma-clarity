@@ -159,17 +159,17 @@ const Pragmatism = () => {
         </motion.div>
 
         {/* Chat and Solution Container */}
-        <div className="h-[calc(100vh-20rem)] relative overflow-hidden">
+        <div className="flex gap-6 h-[calc(100vh-20rem)] relative">
           {/* Chat Container */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ 
               opacity: 1, 
               y: 0,
-              x: isSolutionOpen ? '-20%' : 0
+              width: isSolutionOpen ? '55%' : '100%'
             }}
-            transition={{ duration: 0.5 }}
-            className="absolute left-0 top-0 w-[65%] h-full"
+            transition={{ duration: 0.3 }}
+            className="flex flex-col"
           >
             <Card className="bg-card/50 backdrop-blur-sm border-primary/10 flex-1 flex flex-col overflow-hidden">
               <CardContent className="p-6 flex-1 flex flex-col overflow-hidden">
@@ -268,18 +268,11 @@ const Pragmatism = () => {
           </motion.div>
 
           {/* Solution Panel */}
-          <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: isSolutionOpen ? 0 : '100%' }}
-            transition={{ duration: 0.5 }}
-            className="absolute right-0 top-0 w-[50%] h-full"
-          >
-            <SolutionPanel
-              isOpen={isSolutionOpen}
-              onClose={() => setIsSolutionOpen(false)}
-              solution={currentSolution}
-            />
-          </motion.div>
+          <SolutionPanel
+            isOpen={isSolutionOpen}
+            onClose={() => setIsSolutionOpen(false)}
+            solution={currentSolution}
+          />
         </div>
       </div>
     </div>
