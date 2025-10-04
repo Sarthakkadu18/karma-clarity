@@ -158,17 +158,17 @@ const GuruGranth: React.FC = () => {
         </motion.div>
 
         {/* Chat and Solution Container */}
-        <div className="flex gap-6 h-[calc(100vh-16rem)] relative">
+        <div className="h-[calc(100vh-16rem)] relative overflow-hidden">
           {/* Chat Container */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ 
               opacity: 1, 
               y: 0,
-              width: isSolutionOpen ? '55%' : '100%'
+              x: isSolutionOpen ? '-20%' : 0
             }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col"
+            className="absolute left-0 top-0 w-[65%] h-full"
           >
             <Card className="glass border-border/20 flex-1 flex flex-col h-full overflow-hidden">
               <CardContent className="p-0 flex-1 flex flex-col overflow-hidden">
@@ -275,11 +275,18 @@ const GuruGranth: React.FC = () => {
           </motion.div>
 
           {/* Solution Panel */}
-          <SolutionPanel
-            isOpen={isSolutionOpen}
-            onClose={() => setIsSolutionOpen(false)}
-            solution={currentSolution}
-          />
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: isSolutionOpen ? 0 : '100%' }}
+            transition={{ duration: 0.5 }}
+            className="absolute right-0 top-0 w-[50%] h-full"
+          >
+            <SolutionPanel
+              isOpen={isSolutionOpen}
+              onClose={() => setIsSolutionOpen(false)}
+              solution={currentSolution}
+            />
+          </motion.div>
         </div>
       </main>
     </div>
